@@ -15,6 +15,14 @@ class App(models.Model):
     logo = models.TextField(max_length=500)
     link = models.CharField(max_length=200)
     added_at = models.DateTimeField(auto_now_add=True)
+    sectors = models.ManyToManyField(
+        'sectors.Sector',
+        related_name='apps'
+    )
+    tools = models.ManyToManyField(
+        'tools.Tool',
+        related_name='apps'
+    )
 
     def __str__(self):
         return f"{self.name} - {self.version}"
