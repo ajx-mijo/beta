@@ -13,6 +13,7 @@ from rest_framework.exceptions import PermissionDenied
 
 
 class ReviewListView(APIView):
+    permission_classes = (IsAuthenticated, )
 
     def post(self, request):
         print('Request User ->', request.user)
@@ -28,14 +29,15 @@ class ReviewListView(APIView):
 
 
 class ReviewIndiView(APIView):
+    permission_classes = (IsAuthenticated, )
 
     def delete(self, request, pk):
         try:
             review_to_delete = Review.objects.get(pk=pk)
-            #print('Found review Owner ->', review_to_delete.owner)
-            #print('Request User ->', request.user)
-            # if review_to_delete.owner != request.u  ser:
-            #raise PermissionDenied('Unauthorized')
+            print('Found review Owner ->', review_to_delete.owner)
+            print('Request User ->', request.user)
+            if review_to_delete.owner != request.user:
+                raise PermissionDenied('Unauthorized')
             review_to_delete.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
         except Review.DoesNotExist as e:

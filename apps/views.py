@@ -13,8 +13,9 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 
 class AppListView(APIView):
-
+    permission_classes = (IsAuthenticatedOrReadOnly, )
     # GET All Apps Controller
+
     def get(self, _request):
         apps = App.objects.all()
         print('App queryset ->', apps)
@@ -38,6 +39,7 @@ class AppListView(APIView):
 
 
 class AppIndiView(APIView):
+    permission_classes = (IsAuthenticatedOrReadOnly, )
 
     # GET Helper
     def get_app(self, pk):
@@ -56,6 +58,11 @@ class AppIndiView(APIView):
 
     def put(self, request, pk):
         app = self.get_app(pk)
+        request.data['owner'] = request.user.id
+        print('APP OWNER ->', app.owner)
+        print('REQUEST USER->', request.user)
+        if app.owner != request.user:
+            raise PermissionDenied('Unauthorized')
         try:
             updated_app = PopulatedAppSerializer(
                 app, request.data, partial=True)
@@ -67,10 +74,12 @@ class AppIndiView(APIView):
         except Exception as e:
             return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-    def delete(self, _request, pk):
-        film = self.get_app(pk)
+    def delete(self, request, pk):
+        app = self.get_app(pk)
         try:
-            film.delete()
+            if app.owner != request.user:
+                raise PermissionDenied('Unauthorized')
+            app.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
         except Exception as e:
             return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)

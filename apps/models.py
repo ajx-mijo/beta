@@ -23,6 +23,11 @@ class App(models.Model):
         'tools.Tool',
         related_name='apps'
     )
+    owner = models.ForeignKey(
+        'jwt_auth.User',
+        related_name='apps',
+        on_delete=models.CASCADE
+    )
 
     def __str__(self):
         return f"{self.name} - {self.version}"
