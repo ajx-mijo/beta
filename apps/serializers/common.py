@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from ..models import Application
+from ..models import App
 
 
 class AppSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Application
+        model = App
         fields = '__all__'
