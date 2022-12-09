@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 
-// import { isAuthenticated, handleLogout, getUserId } from './Auth'
+import { isAuthenticated, handleLogout, getUserId } from './Authentication'
 import Logo from '../images/placeholderLogo.png'
 // import { useState } from 'react'
 
@@ -16,7 +16,7 @@ const NavBar = () => {
   // const [userId, setUserId] = useState('')
 
   // ! Navigation
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
 
   return (
@@ -39,24 +39,24 @@ const NavBar = () => {
               <Nav.Link as={Link} to="/apps">
                 Apps
               </Nav.Link>
-              {/* {isAuthenticated() ? */}
-              <>
-                <Nav.Link >
-                  {/* as={Link} to={`/profile/${getUserId()}`} */}
-                  Profile
-                </Nav.Link>
-                {/* <span className='nav-link' onClick={() => handleLogout(navigate)}><span className='red-text'>Logout</span></span> */}
-              </>
-              {/* : */}
-              <>
-                <Nav.Link as={Link} to="/register">
-                  Register
-                </Nav.Link>
-                <Nav.Link as={Link} to="/login">
-                  <span className='red-text'>Login</span>
-                </Nav.Link>
-              </>
-              {/* } */}
+              {isAuthenticated() ?
+                <>
+                  <Nav.Link >
+                    as={Link} to={`/profile/${getUserId()}`}
+                    Profile
+                  </Nav.Link>
+                  <span className='nav-link' onClick={() => handleLogout(navigate)}><span className='red-text'>Logout</span></span>
+                </>
+                :
+                <>
+                  <Nav.Link as={Link} to="/register">
+                    Register
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/login">
+                    <span className='red-text'>Login</span>
+                  </Nav.Link>
+                </>
+              }
             </Nav>
           </Navbar.Collapse>
         </Container>
