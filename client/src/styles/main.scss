@@ -1,0 +1,19 @@
+$primary: #353535;
+$secondary: #1b55fe;
+$tertiary: #ffffff;
+$quaternary: #272727;
+$quinternary: #6b6b6b;
+
+
+.landing-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: $primary;
+  color: $secondary;
+}
+
+.navbar-container {
+  background-color: $tertiary;
+}
