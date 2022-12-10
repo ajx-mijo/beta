@@ -11,6 +11,8 @@ export const getToken = () => {
 }
 
 export const getUserId = () => {
+  console.log('This the number ->', getPayload().sub)
+  console.log('This the number type ->', typeof getPayload().sub)
   return getPayload().sub
 }
 

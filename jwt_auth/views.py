@@ -27,12 +27,15 @@ User = get_user_model()
 class RegisterView(APIView):
 
     def post(self, request):
+        print('Request Data ->', request.data)
+        print(type(request.data))
         try:
-            # Validating User Data
             user_to_register = UserSerializer(data=request.data)
+            print('UTR->', user_to_register)
             if user_to_register.is_valid():
                 user_to_register.save()
                 return Response('Registration Successful', status=status.HTTP_201_CREATED)
+            print('Hit here')
             return Response(user_to_register.errors, status.HTTP_422_UNPROCESSABLE_ENTITY)
         except Exception as e:
             print(e)

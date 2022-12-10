@@ -43,12 +43,10 @@ const AppMultiPage = () => {
               {filteredApps.map((app) => {
                 const {
                   name,
-                  year,
-                  description,
+
                   version,
                   logo,
-                  owner,
-                  tools,
+
                   id
                 } = app
                 // console.log(typeof tools)

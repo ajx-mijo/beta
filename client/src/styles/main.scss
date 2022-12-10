@@ -107,3 +107,81 @@ $quinternary: #6b6b6b;
 .navbar-container {
   background-color: $tertiary;
 }
+
+
+
+
+// ? Form
+.form-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $primary;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px;
+  width: 300px;
+  padding: 40px 10px 20px 10px;
+  border-radius: 18px;
+  background-color: $quaternary;
+  border: 1px $quinternary;
+
+  form {
+    width: 80%;
+
+    select {
+      margin-left: 20px;
+      margin-right: 20px;
+      font-family: 'Roboto Slab', serif;
+      color: grey;
+      border: 1px lightgrey solid;
+      line-height: 1;
+      padding: 10px;
+      border-radius: 4px;
+      background-color: $quaternary;
+    }
+
+
+    label {
+      text-align: center;
+      color: $quinternary;
+    }
+
+    #imageupload {
+      font-family: 'Roboto Slab', serif;
+      color: grey;
+      border: 1px lightgrey solid;
+      line-height: 1;
+      padding: 10px;
+      border-radius: 4px;
+      background-color: white;
+      width: 100%;
+      margin-bottom: 20px;
+
+    }
+
+    input {
+      width: 100%;
+      background-color: white;
+      border-color: 1px grey solid !important;
+    }
+  }
+
+  .btn {
+    margin-top: 30px;
+    align-self: flex-end;
+  }
+
+}
+
+legend {
+  font-weight: 10px;
+}
+
+legend {
+  font-weight: 10px;
+}

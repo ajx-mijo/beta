@@ -18,7 +18,6 @@ const NavBar = () => {
   // ! Navigation
   const navigate = useNavigate()
 
-
   return (
     <div className='navbar-container sticky-top'>
       <Navbar expand="md" className="navbar sticky-top">
@@ -41,8 +40,7 @@ const NavBar = () => {
               </Nav.Link>
               {isAuthenticated() ?
                 <>
-                  <Nav.Link >
-                    as={Link} to={`/profile/${getUserId()}`}
+                  <Nav.Link as={Link} to={`/profile/${getUserId()}`}>
                     Profile
                   </Nav.Link>
                   <span className='nav-link' onClick={() => handleLogout(navigate)}><span className='red-text'>Logout</span></span>
