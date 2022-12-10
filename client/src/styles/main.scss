@@ -4,13 +4,103 @@ $tertiary: #ffffff;
 $quaternary: #272727;
 $quinternary: #6b6b6b;
 
+:root {
+  --typewriterSpeed: 2s;
+  --typewriterCharacters: 23;
+}
+
+.lp-text {
+  display: flex;
+  // align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .lp-title {
+    font-size: clamp(1rem, 3vw + 1rem, 4rem);
+    position: relative;
+    font-family: "Source Code Pro", monospace;
+    position: relative;
+    width: max-content;
+  }
+}
+
+.lp-title::before,
+.lp-title::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.lp-title::before {
+  background: $quaternary;
+  animation: typewriter var(--typewriterSpeed) steps(var(--typewriterCharacters)) 1s forwards;
+}
+
+.lp-title::after {
+  width: 0.125em;
+  background: black;
+  animation: typewriter var(--typewriterSpeed) steps(var(--typewriterCharacters)) 1s forwards,
+    blink 750ms steps(var(--typewriterCharacters)) infinite;
+}
+
+.subtitle {
+  color: white;
+  font-size: 2rem;
+  font-weight: 400;
+  opacity: 0;
+  transform: translateY(3rem);
+  animation: fadeInLeft 2s ease calc(var(--typewriterSpeed) + 2s) forwards;
+}
+
+.subtitle-2 {
+  color: white;
+  font-size: 2rem;
+  font-weight: 400;
+  opacity: 0;
+  transform: translateY(3rem);
+  animation: fadeInLeft 2s ease calc(var(--typewriterSpeed) + 4s) forwards;
+}
+
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes blink {
+  to {
+    background: transparent;
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
 .landing-page {
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-grow: 1;
-  background-color: $primary;
+  background-color: $quaternary;
   color: $secondary;
 }
 

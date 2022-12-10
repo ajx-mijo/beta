@@ -19,6 +19,7 @@ const AppMultiPage = () => {
     const getData = async () => {
       try {
         const { data } = await axios.get('api/apps/')
+        console.log(data)
         setApps(data)
       } catch (err) {
         console.log(err.message)
@@ -50,6 +51,8 @@ const AppMultiPage = () => {
                   tools,
                   id
                 } = app
+                // console.log(typeof tools)
+                // console.log(tools[0])
                 return (
                   <Col
                     key={id}
@@ -74,7 +77,7 @@ const AppMultiPage = () => {
                           <div className='app-card-header' id='index-header'>
                             <div className='index-page-title'>
                               <h4 className='app-card-title mb-4' id='index-title'>{name}</h4>
-                              <p className='card-code-multi' id='index-code'>{tools}</p>
+                              <p className='card-code-multi' id='index-code'>{version}</p>
                             </div>
                             <div className='index-review-container'>
                               <p className='card-avg-index'><span className='index-rating'>{version}</span></p>

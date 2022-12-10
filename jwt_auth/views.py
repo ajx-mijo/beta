@@ -72,7 +72,7 @@ class LoginView(APIView):
 # ! CREATE DIFFERENT PROFILE APP
 
 
-class UpdateUserView(APIView):
+class UserDetailView(APIView):
     permission_classes = (IsAuthenticated, )
 
     def get_user(self, pk):
@@ -84,6 +84,9 @@ class UpdateUserView(APIView):
         except Exception as e:
             print('Error ->', e)
             return Response(str(e), status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    def get(self, _request, pk):
+        return Response(UserSerializer(self.get_user(pk)).data)
 
     def put(self, request, pk):
         user = self.get_user(pk)

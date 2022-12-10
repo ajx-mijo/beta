@@ -10,5 +10,6 @@ from .models import Tool
 class ToolListView(APIView):
     def get(self, _request):
         tools = Tool.objects.all()
+        print('Tools ->', tools)
         serialized_tools = PopulatedToolSerializer(tools, many=True)
         return Response(serialized_tools.data)

@@ -19,7 +19,7 @@ class AppListView(APIView):
     def get(self, _request):
         apps = App.objects.all()
         print('App queryset ->', apps)
-        serialized_apps = AppSerializer(apps, many=True)
+        serialized_apps = PopulatedAppSerializer(apps, many=True)
         print('Serialized app data ->', serialized_apps.data)
         return Response(serialized_apps.data, status.HTTP_200_OK)
 
