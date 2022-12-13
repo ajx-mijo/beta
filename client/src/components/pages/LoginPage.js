@@ -29,8 +29,9 @@ const LoginPage = () => {
       setToken(data.token)
       navigate('/')
     } catch (err) {
-      setError(err.response.data.message)
-      console.log('ERRORR->', err.response.data.message)
+      console.log(err)
+      setError(err.response.data.detail)
+      console.log('ERRORR->', err.response.data.detail)
       // setError({ ...error, [e.target.name]: '', message: '' })
     }
   }
@@ -68,8 +69,10 @@ const LoginPage = () => {
             />
             {/* Error Message */}
             {error && <small className='text-danger'>{error}</small>}
-            {/* {error && error.message && <small className='text-danger'>{error.message}</small>} */}
-            <button to={'/'} className="btn btn-danger btn-lg mt-3 mb-3">Login</button>
+            {error && error.message && <small className='text-danger'>{error.message}</small>}
+            <div className='login-btn'>
+              <button to={'/'} className="btn btn-danger btn-lg mt-3 mb-3">Login</button>
+            </div>
           </form>
         </div>
       </div>

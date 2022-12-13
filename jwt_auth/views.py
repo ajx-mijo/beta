@@ -55,7 +55,7 @@ class LoginView(APIView):
 
         if not user_to_login.check_password(password):
             print('PASSWORD INCORRECT')
-            raise PermissionDenied('Invalid Credentials')
+            raise PermissionDenied('Password Incorrect')
 
         dt = datetime.now() + timedelta(days=7)
         dt_as_seconds = int(dt.strftime('%s'))
