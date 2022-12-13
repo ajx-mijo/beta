@@ -2,9 +2,9 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-import SpinnerItem from '../common/Spinner'
+import Spinner from '../common/Spinner'
 import SearchFilter from '../common/SearchFilter'
-
+import ToolDisplay from '../common/ToolDisplay'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/row'
 import Col from 'react-bootstrap/Col'
@@ -75,10 +75,10 @@ const AppMultiPage = () => {
                           <div className='app-card-header' id='index-header'>
                             <div className='index-page-title'>
                               <h4 className='app-card-title mb-4' id='index-title'>{name}</h4>
-                              <p className='card-code-multi' id='index-code'>{version}</p>
+                              {/* <ToolDisplay app={filteredApps} /> */}
                             </div>
-                            <div className='index-review-container'>
-                              <p className='card-avg-index'><span className='index-rating'>{version}</span></p>
+                            <div className='index-version-container'>
+                              <p className='card-version-index'><span className='index-version'>{version}</span></p>
                             </div>
                           </div>
                         </Card.Body>
@@ -91,7 +91,7 @@ const AppMultiPage = () => {
           ) : errors ?
             <h2>Something has gone wrong, my sincere apologies...</h2>
             :
-            <SpinnerItem />
+            <Spinner />
           }
         </Container>
       </main>
