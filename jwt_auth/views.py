@@ -8,7 +8,7 @@ from rest_framework.exceptions import PermissionDenied, NotFound
 from django.contrib.auth import get_user_model
 
 from .serializers.common import UserSerializer
-
+from .serializers.populated import PopulatedUserSerializer
 from rest_framework.permissions import IsAuthenticated
 
 from rest_framework.exceptions import PermissionDenied
@@ -89,7 +89,7 @@ class UserDetailView(APIView):
             return Response(str(e), status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     def get(self, _request, pk):
-        return Response(UserSerializer(self.get_user(pk)).data)
+        return Response(PopulatedUserSerializer(self.get_user(pk)).data)
 
     def put(self, request, pk):
         user = self.get_user(pk)

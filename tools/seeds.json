@@ -1,0 +1,34 @@
+[
+{
+  "model": "tools.tool",
+  "pk": 1,
+  "fields": {
+    "name": "Python",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/2560px-Python_logo_and_wordmark.svg.png"
+  }
+},
+{
+  "model": "tools.tool",
+  "pk": 2,
+  "fields": {
+    "name": "Django",
+    "logo": "https://static.djangoproject.com/img/logos/django-logo-negative.1d528e2cb5fb.png"
+  }
+},
+{
+  "model": "tools.tool",
+  "pk": 3,
+  "fields": {
+    "name": "Java",
+    "logo": "https://www.developer.com/wp-content/uploads/2021/09/Java-tutorials.jpg"
+  }
+},
+{
+  "model": "tools.tool",
+  "pk": 4,
+  "fields": {
+    "name": "JavaScript",
+    "logo": "https://1000logos.net/wp-content/uploads/2020/09/JavaScript-Logo.png"
+  }
+}
+]

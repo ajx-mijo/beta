@@ -1,0 +1,51 @@
+[
+{
+  "model": "apps.app",
+  "pk": 1,
+  "fields": {
+    "name": "Zoomer",
+    "year": 1981,
+    "site_images": "[\"https://wisperbikes.com/wp-content/uploads/2020/08/MDST.jpg\"]",
+    "description": "Zoomer is an application designed to encourage ride-sharing among the e-bike, e-scooter community. Starting out as. a side-project during my first few years working as Tech Inc. I realized that many people were buying e-transport vehicles and then leaving them regularly unused. This is a community project designed to help make the world green! Let me know what you think!",
+    "version": "v1.0",
+    "new_features": "User Profiles and Interfaces added with full CRUD and map functionalities.",
+    "logo": "https://wompampsupport.azureedge.net/fetchimage?siteId=7575&v=2&jpgQuality=100&width=700&url=https%3",
+    "link": "https://www.e-bikesdirect.co.uk/",
+    "added_at": "2022-12-08T16:58:24.534Z",
+    "owner": 2,
+    "sectors": [
+      2
+    ],
+    "tools": [
+      1,
+      2,
+      4
+    ]
+  }
+},
+{
+  "model": "apps.app",
+  "pk": 2,
+  "fields": {
+    "name": "NewVision",
+    "year": 2016,
+    "site_images": "[\"https://grandvision-images.imgix.net/media/61DFCDC7-BCC8-4E8A-ACCB81165ADF1B09/669F4226-1E0A-422B-AB374E724B0B0520/1EA39C62-4643-4650-9E992B48104A9427/original_png-8719154674457_00001.png\"]",
+    "description": "Challenger to Specsaver - a sunglass sharing platform",
+    "version": "v1.5",
+    "new_features": "User Profiles and Interfaces added with full CRUD and map functionalities.",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Specsavers_logo.svg/1200px-Specsavers_logo.svg.png\"",
+    "link": "https://www.specsavers.co.uk/",
+    "added_at": "2022-12-08T16:59:24.663Z",
+    "owner": 1,
+    "sectors": [
+      1,
+      2
+    ],
+    "tools": [
+      2,
+      3,
+      4
+    ]
+  }
+}
+]

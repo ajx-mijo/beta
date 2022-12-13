@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'reviews',
     'sectors',
     'tools',
-    'jwt_auth'
+    'jwt_auth',
+    'user_profile'
 ]
 
 MIDDLEWARE = [

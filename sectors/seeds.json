@@ -1,0 +1,37 @@
+[
+{
+  "model": "sectors.sector",
+  "pk": 1,
+  "fields": {
+    "name": "Fashion"
+  }
+},
+{
+  "model": "sectors.sector",
+  "pk": 2,
+  "fields": {
+    "name": "E-Commerce"
+  }
+},
+{
+  "model": "sectors.sector",
+  "pk": 3,
+  "fields": {
+    "name": "Financial Services"
+  }
+},
+{
+  "model": "sectors.sector",
+  "pk": 4,
+  "fields": {
+    "name": "Social Media"
+  }
+},
+{
+  "model": "sectors.sector",
+  "pk": 5,
+  "fields": {
+    "name": "Advertising"
+  }
+}
+]
