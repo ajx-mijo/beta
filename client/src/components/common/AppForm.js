@@ -4,6 +4,8 @@ import GetAllTools from '../../helpers/GetAllTools'
 import ImageUpload from '../../helpers/ImageUpload'
 import LogoUpload from '../../helpers/LogoUpload'
 
+
+
 const AppForm = ({ handleSubmit, formFields, setFormFields, errors, setErrors }) => {
 
 
@@ -122,6 +124,7 @@ const AppForm = ({ handleSubmit, formFields, setFormFields, errors, setErrors })
               type="text"
               className="dropdown-addApp mt-3 mb-3 text-center"
               value={formFields.sectors}
+              multiple={true}
             >
               <GetAllSectors />
             </select>

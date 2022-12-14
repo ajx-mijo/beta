@@ -63,10 +63,8 @@ const AppSinglePage = () => {
                     <p className='app-version'>{app.version}</p>
                   </div>
                   <div className='single-page-rating'>
-                    {/* <p className='card-avg'><span className='rating'>{location.avgRating} &#9733;</span></p> */}
                   </div>
                 </div>
-                {/* <CarouselImageController location={location} /> */}
                 <div className='single-page-site-image'><img src={app.site_images} alt={app.name} width="1500" height="700" /></div>
                 <Tabs
                   defaultActiveKey="details"
@@ -76,12 +74,15 @@ const AppSinglePage = () => {
                 >
                   <Tab eventKey="details" title="Description">
                     <Col sm="12" >
-                      {/* <InfographicSingle location={location} /> */}
                       <hr className='single-page-hr'></hr>
                       <h3 className='mt-3 mb-3'>App Description:</h3>
                       <p className='app-description'>{app.description}</p>
-                      <h5 className='mt-5 mb-3 nearby-activities-title'>New Features:</h5>
+                      <h5 className='mt-5 mb-3 new-features-title'>New Features:</h5>
                       <p className='app-description'>{app.new_features}</p>
+                      <h5 className='mt-5 mb-3 app-link'>Link: <a href={app.link} target="_blank" rel="noreferrer">{app.name}</a></h5>
+                      {/* <p>
+                        <a href={app.link} target="_blank" rel="noreferrer">{app.name}</a>
+                      </p> */}
                       <hr className='single-page-hr'></hr>
                     </Col>
                     {isOwner(app.owner) &&

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 
+import Select from 'react-select'
 
 // Imports
 import axios from 'axios'
@@ -40,5 +41,11 @@ const GetAllSectors = () => {
     </>
   )
 }
+
+{/* <Select
+options={sectorArr}
+onChange={handleChange}
+isMulti
+/> */}
 
 export default GetAllSectors

@@ -16,7 +16,7 @@ const AddAppPage = () => {
   // ! State
   const [formFields, setFormFields] = useState({
     name: '',
-    year: null,
+    year: undefined,
     site_images: [],
     description: '',
     version: '',

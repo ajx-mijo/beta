@@ -6,12 +6,16 @@ import axios from 'axios'
 import { getToken, handleLogout } from '../common/Authentication'
 import UploadImage from '../../helpers/ImageUpload'
 
+import ProfileReviewDisplay from '../common/ProfileReviewDisplay'
+import ProfileAppDisplay from '../common/ProfileAppDisplay'
+
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
+import Tab from 'react-bootstrap/Tab'
+import Tabs from 'react-bootstrap/Tabs'
 
-import ListGroup from 'react-bootstrap/ListGroup'
-import ListGroupItem from 'react-bootstrap/esm/ListGroupItem'
+
 
 
 const ProfilePage = () => {
@@ -19,6 +23,7 @@ const ProfilePage = () => {
   const [user, setUser] = useState([])
   const [profile, setProfile] = useState([])
   const [errors, setErrors] = useState(false)
+
   const [formData, setFormData] = useState({
     image: '',
     userBio: '',
@@ -30,6 +35,7 @@ const ProfilePage = () => {
   // ! Navigation
   const navigate = useNavigate()
 
+  // ! Get User Info
   useEffect(() => {
     const getUser = async () => {
       try {
@@ -47,6 +53,7 @@ const ProfilePage = () => {
     getUser()
   }, [userId])
 
+  // ! Get Profile Info
   useEffect(() => {
     const getProfile = async () => {
       try {
@@ -139,49 +146,24 @@ const ProfilePage = () => {
                     <p>{profile.biography}</p>
                   </div>
                   <div className='mt-4 d-flex flex-column justify-content-center'>
-                    <Link className='profile-btn btn align-self-center btn-lg btn-md mt-5 mb-3' to="/apps/add" >Add Current Project</Link>
                     <Link className='profile-btn btn align-self-center btn-lg btn-md mt-5 mb-5' to="/login" onClick={() => handleLogout(navigate)}>Logout</Link>
                   </div>
                 </div>
               </div>
             </Col>
             <Col md="8">
-              <h3 className="mt-5 mb-5">Your Reviews</h3>
+              <div className='profile-page-app-title'>
+                <h3 className="mt-5 mb-5">Your Apps</h3>
+                <Link className='profile-btn btn align-self-center btn-lg btn-md mt-5 mb-3' to="/apps/add" >Add New Project</Link>
+              </div>
               <div className='user-reviews'>
-                <>
-                  {user.reviews ? (
-                    <ListGroup className='ms-1'>
-                      {user.reviews.map(location => {
-                        const { reviews, locationId, locationName, locationImage } = location
-                        return reviews.map(review => {
-                          return (
-                            <Link
-                              className="text-decoration-none"
-                              key={review._id}
-                              to={`/locations/${locationId}`}>
-                              <ListGroupItem className='d-flex review-list list-group-item-action mt-2 review-profile-item'>
-                                <div>
-                                  <img className='list-group-img img-thumbnail' src={locationImage}></img>
-                                </div>
-                                <div className='d-flex flex-column align-items-start ms-3'>
-                                  <h4>{locationName}</h4>
-                                  <p className='d-none d-sm-block'>{review.text}</p>
-                                </div>
-                                <div className='d-flex flex-column buttons align-self-start'>
-                                  <Link onClick={() => deleteReview(locationId, review._id)} className='btn mt-3 align-self-end' id="del2-btn" to="">Delete</Link>
-                                </div>
-                              </ListGroupItem>
-                            </Link>
-                          )
-                        })
-                      })}
-                    </ListGroup>
-                  ) : errors ? (
-                    <h2>Error...</h2>
-                  ) : (
-                    <h2>No reviews</h2>
-                  )}
-                </>
+                <ProfileAppDisplay errors={errors} userId={userId} />
+              </div>
+              <div className='profile-page-review-title'>
+                <h3 className="mt-5 mb-5">Your Reviews</h3>
+              </div>
+              <div className='user-reviews'>
+                <ProfileReviewDisplay errors={errors} userId={userId} />
               </div>
             </Col>
           </Row>

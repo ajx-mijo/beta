@@ -4,7 +4,7 @@ from .models import Review
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-
+from .models import Review
 from rest_framework.exceptions import NotFound
 
 from rest_framework.permissions import IsAuthenticated
@@ -26,6 +26,13 @@ class ReviewListView(APIView):
             return Response(review_to_add.errors, status.HTTP_422_UNPROCESSABLE_ENTITY)
         except Exception as e:
             return Response(str(e), status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    def get(self, _request):
+        reviews = Review.objects.all()
+        print('App queryset ->', reviews)
+        serialized_reviews = ReviewSerializer(reviews, many=True)
+        print('Serialized app data ->', serialized_reviews.data)
+        return Response(serialized_reviews.data, status.HTTP_200_OK)
 
 
 class ReviewIndiView(APIView):
