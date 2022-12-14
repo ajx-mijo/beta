@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // Imports
 import axios from 'axios'
 import { getToken, getUserId } from '../common/Authentication'
-import AddAppForm from '../common/AddAppForm'
+import AppForm from '../common/AppForm'
 
 
 const AddAppPage = () => {
@@ -16,15 +16,15 @@ const AddAppPage = () => {
   // ! State
   const [formFields, setFormFields] = useState({
     name: '',
-    year: undefined,
-    site_images: undefined,
+    year: null,
+    site_images: [],
     description: '',
     version: '',
     new_features: '',
     logo: '',
     link: '',
-    sectors: '',
-    tools: [''],
+    sectors: [],
+    tools: [],
     owner: `${owner}`
   })
 
@@ -56,8 +56,8 @@ const AddAppPage = () => {
   return (
     <div className="site-wrapper">
       <div className="hero-page text-center form-main">
-        <h1 className="mt-5">Upload your New Project</h1>
-        <AddAppForm
+        <h1 className="mt-5 form-header">Upload your New Project</h1>
+        <AppForm
           handleSubmit={handleSubmit}
           formFields={formFields}
           setFormFields={setFormFields}

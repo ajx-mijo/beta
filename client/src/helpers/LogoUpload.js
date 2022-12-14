@@ -19,7 +19,7 @@ const LogoUpload = ({ imageFormData, setFormData, handleSubmit }) => {
       const { data } = await axios.post(process.env.REACT_APP_CLOUDINARY_URL, formData)
       // Add profile image to form data
       console.log('4')
-      setFormData({ ...imageFormData, image: data.secure_url })
+      setFormData({ ...imageFormData, logo: data.secure_url })
     } catch (err) {
       console.log('Logo upload error->', err)
     }

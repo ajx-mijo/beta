@@ -23,8 +23,10 @@ const ToolDisplay = ({ app }) => {
         tools.map((tool) => {
           return (
             <>
-              <h4>{tool.name}</h4>
-              <img src={tool.logo} alt='Developer tool logo' height={100} />
+              {/* <h4>{tool.name}</h4> */}
+              <div key={tool.id}>
+                <img src={tool.logo} alt='Developer tool logo' height={50} width={50} />
+              </div>
             </>
           )
         })

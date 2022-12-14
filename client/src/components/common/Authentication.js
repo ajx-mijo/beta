@@ -1,6 +1,6 @@
 import { Buffer } from 'buffer'
 
-const tokenName = 'vanToken'
+const tokenName = 'appToken'
 
 export const setToken = (token) => {
   localStorage.setItem(tokenName, token)

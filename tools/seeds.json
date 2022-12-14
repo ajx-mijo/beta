@@ -1,34 +1,186 @@
 [
 {
   "model": "tools.tool",
-  "pk": 1,
+  "pk": 5,
   "fields": {
-    "name": "Python",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/2560px-Python_logo_and_wordmark.svg.png"
+    "name": "TypeScript",
+    "logo": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671010602/APP_OVERFLOW_API/typescript_vl4gtg.png"
   }
 },
 {
   "model": "tools.tool",
-  "pk": 2,
+  "pk": 6,
   "fields": {
-    "name": "Django",
-    "logo": "https://static.djangoproject.com/img/logos/django-logo-negative.1d528e2cb5fb.png"
+    "name": "RubyMine",
+    "logo": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671010601/APP_OVERFLOW_API/rubymine_ffe568.png"
   }
 },
 {
   "model": "tools.tool",
-  "pk": 3,
+  "pk": 7,
+  "fields": {
+    "name": "Yarn",
+    "logo": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671010601/APP_OVERFLOW_API/yarn_oquuy8.png"
+  }
+},
+{
+  "model": "tools.tool",
+  "pk": 8,
+  "fields": {
+    "name": "PyCharm",
+    "logo": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671010601/APP_OVERFLOW_API/pycharm_yn6adt.png"
+  }
+},
+{
+  "model": "tools.tool",
+  "pk": 9,
+  "fields": {
+    "name": "Linux",
+    "logo": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671010601/APP_OVERFLOW_API/linux_p20fnf.png"
+  }
+},
+{
+  "model": "tools.tool",
+  "pk": 10,
+  "fields": {
+    "name": "NodeJS",
+    "logo": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671010601/APP_OVERFLOW_API/node-js_yr9hb5.png"
+  }
+},
+{
+  "model": "tools.tool",
+  "pk": 11,
+  "fields": {
+    "name": "MySQL",
+    "logo": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671010601/APP_OVERFLOW_API/mysql_hxk1xw.png"
+  }
+},
+{
+  "model": "tools.tool",
+  "pk": 12,
+  "fields": {
+    "name": "NGINX",
+    "logo": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671010601/APP_OVERFLOW_API/nginx_semvbe.png"
+  }
+},
+{
+  "model": "tools.tool",
+  "pk": 13,
+  "fields": {
+    "name": "C++",
+    "logo": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671010591/APP_OVERFLOW_API/cplusplus_timzch.png"
+  }
+},
+{
+  "model": "tools.tool",
+  "pk": 14,
+  "fields": {
+    "name": "C",
+    "logo": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671010591/APP_OVERFLOW_API/c_fp28xy.png"
+  }
+},
+{
+  "model": "tools.tool",
+  "pk": 15,
+  "fields": {
+    "name": "Bootstrap",
+    "logo": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671010591/APP_OVERFLOW_API/bootstrap_op4w3f.png"
+  }
+},
+{
+  "model": "tools.tool",
+  "pk": 16,
+  "fields": {
+    "name": "CSS3",
+    "logo": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671010591/APP_OVERFLOW_API/css3_yau5rg.png"
+  }
+},
+{
+  "model": "tools.tool",
+  "pk": 17,
+  "fields": {
+    "name": "C#",
+    "logo": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671010591/APP_OVERFLOW_API/csharp_hkfig0.png"
+  }
+},
+{
+  "model": "tools.tool",
+  "pk": 18,
   "fields": {
     "name": "Java",
-    "logo": "https://www.developer.com/wp-content/uploads/2021/09/Java-tutorials.jpg"
+    "logo": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671010563/APP_OVERFLOW_API/java_yeq2z6.png"
   }
 },
 {
   "model": "tools.tool",
-  "pk": 4,
+  "pk": 19,
   "fields": {
     "name": "JavaScript",
-    "logo": "https://1000logos.net/wp-content/uploads/2020/09/JavaScript-Logo.png"
+    "logo": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671010563/APP_OVERFLOW_API/javascript_hqd0dm.png"
+  }
+},
+{
+  "model": "tools.tool",
+  "pk": 20,
+  "fields": {
+    "name": "Heroku",
+    "logo": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671010563/APP_OVERFLOW_API/heroku_hbqwcx.png"
+  }
+},
+{
+  "model": "tools.tool",
+  "pk": 21,
+  "fields": {
+    "name": "GitHub",
+    "logo": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671010563/APP_OVERFLOW_API/github_asexxi.png"
+  }
+},
+{
+  "model": "tools.tool",
+  "pk": 22,
+  "fields": {
+    "name": "Docker",
+    "logo": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671010562/APP_OVERFLOW_API/docker_lgxgud.png"
+  }
+},
+{
+  "model": "tools.tool",
+  "pk": 23,
+  "fields": {
+    "name": "HTML5",
+    "logo": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671010562/APP_OVERFLOW_API/html5_p6o7qj.png"
+  }
+},
+{
+  "model": "tools.tool",
+  "pk": 24,
+  "fields": {
+    "name": "Grunt",
+    "logo": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671010562/APP_OVERFLOW_API/grunt_k9qvvn.png"
+  }
+},
+{
+  "model": "tools.tool",
+  "pk": 25,
+  "fields": {
+    "name": "Git",
+    "logo": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671010562/APP_OVERFLOW_API/git_plpqsl.png"
+  }
+},
+{
+  "model": "tools.tool",
+  "pk": 26,
+  "fields": {
+    "name": "Drupal",
+    "logo": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671010562/APP_OVERFLOW_API/drupal_h9l2nn.png"
+  }
+},
+{
+  "model": "tools.tool",
+  "pk": 27,
+  "fields": {
+    "name": "Django",
+    "logo": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671010553/APP_OVERFLOW_API/django_becyvx.png"
   }
 }
 ]

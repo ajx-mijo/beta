@@ -13,7 +13,7 @@ const GetAllSectors = () => {
     const getData = async () => {
       try {
         const { data } = await axios.get('/api/sectors/')
-        console.log(data)
+        // console.log('Sector data ->', data)
         setAllSectors(data)
       } catch (error) {
         console.log(error.message)
@@ -27,8 +27,9 @@ const GetAllSectors = () => {
     <>
       {allSectors ?
         allSectors.map((sector) => {
+          // console.log(sector)
           return (
-            <option key={sector.id} value={[sector.name]} multiple={true}>{sector.name}</option>
+            <option key={sector.id} value={sector.id} multiple={true}>{sector.name}</option>
           )
         })
         :

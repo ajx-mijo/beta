@@ -40,6 +40,9 @@ const NavBar = () => {
               </Nav.Link>
               {isAuthenticated() ?
                 <>
+                  <Nav.Link as={Link} to={'/apps/add'}>
+                    Add your App
+                  </Nav.Link>
                   <Nav.Link as={Link} to={`/profile/${getUserId()}`}>
                     Profile
                   </Nav.Link>

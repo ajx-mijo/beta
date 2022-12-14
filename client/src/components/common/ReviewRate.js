@@ -111,8 +111,11 @@ const ReviewInput = ({ app, setApp }) => {
               const { _id } = rev
               return (
                 <div className='individual-review' key={_id}>
-                  <h4 id='rev-name'>{rev.owner.username}</h4>
-                  <span className='rating'> {rev.rating}&#9733;</span>
+                  <h4 id='rev-name'>{rev.owner}</h4>
+                  <span className='rating'> UX: {rev.ux_rating}&#9733;</span>
+                  <span className='rating'> Design: {rev.design_rating}&#9733;</span>
+                  <span className='rating'> Performance: {rev.performance_rating}&#9733;</span>
+                  <span className='rating'> Accessibility: {rev.accessibility_rating}&#9733;</span>
                   <p>{rev.text}</p>
                   <hr></hr>
                 </div>

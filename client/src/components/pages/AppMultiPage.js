@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom'
 import Spinner from '../common/Spinner'
 import SearchFilter from '../common/SearchFilter'
 import ToolDisplay from '../common/ToolDisplay'
+
+import PlaceHolder from '../common/PlaceHolder'
+
+
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/row'
 import Col from 'react-bootstrap/Col'
@@ -14,6 +18,17 @@ const AppMultiPage = () => {
   const [apps, setApps] = useState([])
   const [errors, setErrors] = useState(false)
   const [filteredApps, setFilteredApps] = useState([])
+
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    setTimeout(function () {
+      setLoading(false)
+    }, 2000)
+  }, [])
+
+
+
 
   useEffect(() => {
     const getData = async () => {
@@ -38,47 +53,32 @@ const AppMultiPage = () => {
             filteredApps={filteredApps}
             setFilteredApps={setFilteredApps}
           />
+          {loading &&
+            filteredApps.map((app) => {
+              return (
+                <>
+                  <PlaceHolder />
+                </>
+              )
+            })
+          }
           {filteredApps.length ? (
             <Row>
               {filteredApps.map((app) => {
-                const {
-                  name,
-
-                  version,
-                  logo,
-
-                  id
-                } = app
-                // console.log(typeof tools)
-                // console.log(tools[0])
+                const { name, version, logo, new_features, id } = app
                 return (
-                  <Col
-                    key={id}
-                    xs="12"
-                    sm="12"
-                    // md="6"
-                    // lg="4"
-                    // xl="4"
-                    className="char-card mb-4"
-                  >
-                    <Link
-                      className="text-decoration-none"
-                      to={`/apps/${id}`}
-                    >
+                  <Col key={id} xs="12" sm="12" className="char-card mb-4">
+                    <Link className="text-decoration-none" to={`/apps/${id}`}>
                       <Card className="app-card">
-                        <div
-                          className="card-image"
-                          style={{ backgroundImage: `url(${logo})` }}
-                        >
-                        </div>
                         <Card.Body className="d-flex flex-column">
                           <div className='app-card-header' id='index-header'>
-                            <div className='index-page-title'>
-                              <h4 className='app-card-title mb-4' id='index-title'>{name}</h4>
-                              {/* <ToolDisplay app={filteredApps} /> */}
+                            <div className='index-page-logo'>
+                              <img src={logo} alt={name} width="100" height="100" />
                             </div>
                             <div className='index-version-container'>
-                              <p className='card-version-index'><span className='index-version'>{version}</span></p>
+                              <h4 className='card-version-index'><span className='index-version'>{version}</span></h4>
+                              <h5>New Features:</h5>
+                              <p>{new_features}</p>
                             </div>
                           </div>
                         </Card.Body>
@@ -95,7 +95,7 @@ const AppMultiPage = () => {
           }
         </Container>
       </main>
-    </div>
+    </div >
 
   )
 }

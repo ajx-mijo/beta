@@ -13,7 +13,7 @@ const GetAllTools = () => {
     const getData = async () => {
       try {
         const { data } = await axios.get('/api/tools/')
-        console.log(data)
+        // console.log(data)
         setAllTools(data)
       } catch (error) {
         console.log(error.message)
@@ -28,7 +28,7 @@ const GetAllTools = () => {
       {allTools ?
         allTools.map((tool) => {
           return (
-            <option key={tool.id} value={[tool.name, tool.image]} multiple={true} >{tool.name}</option>
+            <option key={tool.id} value={tool.id} multiple={true} >{tool.name}</option>
           )
         })
         :

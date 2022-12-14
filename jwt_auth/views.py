@@ -72,9 +72,6 @@ class LoginView(APIView):
         }, status.HTTP_202_ACCEPTED)
 
 
-# ! CREATE DIFFERENT PROFILE APP
-
-
 class UserDetailView(APIView):
     permission_classes = (IsAuthenticated, )
 
@@ -89,7 +86,11 @@ class UserDetailView(APIView):
             return Response(str(e), status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     def get(self, _request, pk):
-        return Response(PopulatedUserSerializer(self.get_user(pk)).data)
+        user = self.get_user(pk)
+        print('User->', user)
+        serialized_user = PopulatedUserSerializer(user)
+        print('Pop user ->', serialized_user)
+        return Response(serialized_user.data)
 
     def put(self, request, pk):
         user = self.get_user(pk)

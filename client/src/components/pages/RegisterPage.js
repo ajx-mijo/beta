@@ -10,11 +10,10 @@ const RegisterPage = () => {
 
   const [formFields, setFormFields] = useState({
     email: "",
-    first_name: "",
-    last_name: "",
     username: "",
     password: "",
-    password_confirmation: ""
+    password_confirmation: "",
+    user_profile: []
   })
 
   const handleSubmit = async (e) => {
@@ -46,24 +45,6 @@ const RegisterPage = () => {
               onChange={handleChange}
               placeholder="Email *"
               value={formFields.email}
-            />
-            <input
-              required
-              className='form-control'
-              type="text"
-              name="first_name"
-              onChange={handleChange}
-              placeholder="First Name*"
-              value={formFields.first_name}
-            />
-            <input
-              required
-              className='form-control'
-              type="text"
-              name="last_name"
-              onChange={handleChange}
-              placeholder="Last Name *"
-              value={formFields.last_name}
             />
             <input
               required

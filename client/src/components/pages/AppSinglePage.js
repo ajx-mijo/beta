@@ -53,8 +53,8 @@ const AppSinglePage = () => {
   return (
     <div className="site-wrapper">
       <main className="single-page">
-        <Container className="fluid mt-4 single-page-container">
-          <Row>
+        <Container className="fluid mt-4 single-page-container" >
+          <Row className='single-page-row' xs='12'>
             {app ?
               <>
                 <div className='single-page-header'>
@@ -67,6 +67,7 @@ const AppSinglePage = () => {
                   </div>
                 </div>
                 {/* <CarouselImageController location={location} /> */}
+                <div className='single-page-site-image'><img src={app.site_images} alt={app.name} width="1500" height="700" /></div>
                 <Tabs
                   defaultActiveKey="details"
                   id="fill-tab-example"
@@ -77,7 +78,7 @@ const AppSinglePage = () => {
                     <Col sm="12" >
                       {/* <InfographicSingle location={location} /> */}
                       <hr className='single-page-hr'></hr>
-                      <h3 className='mt-3 mb-3'>Description:</h3>
+                      <h3 className='mt-3 mb-3'>App Description:</h3>
                       <p className='app-description'>{app.description}</p>
                       <h5 className='mt-5 mb-3 nearby-activities-title'>New Features:</h5>
                       <p className='app-description'>{app.new_features}</p>
@@ -86,7 +87,7 @@ const AppSinglePage = () => {
                     {isOwner(app.owner) &&
                       <div className='edit-delete-buttons d-flex justify-content-evenly'>
                         <button onClick={deleteApp} className='btn btn-danger btn-lg mt-3 mb-3 ' id='del-btn'>Delete app</button>
-                        <Link to={`/apps/${appId}/edit`}>
+                        <Link to={`/apps/${appId}/update`}>
                           <button className='btn  btn-warning btn-lg mt-3 mb-3' id='edit-btn'>Edit app</button>
                         </Link>
                       </div>

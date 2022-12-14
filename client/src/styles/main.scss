@@ -9,6 +9,11 @@ $quinternary: #6b6b6b;
   --typewriterCharacters: 23;
 }
 
+body {
+  background-color: $tertiary;
+  color: $secondary;
+}
+
 .lp-text {
   display: flex;
   // align-items: center;
@@ -35,19 +40,19 @@ $quinternary: #6b6b6b;
 }
 
 .lp-title::before {
-  background: $quaternary;
+  background: $tertiary;
   animation: typewriter var(--typewriterSpeed) steps(var(--typewriterCharacters)) 1s forwards;
 }
 
 .lp-title::after {
   width: 0.125em;
-  background: black;
+  background: $tertiary;
   animation: typewriter var(--typewriterSpeed) steps(var(--typewriterCharacters)) 1s forwards,
     blink 750ms steps(var(--typewriterCharacters)) infinite;
 }
 
 .subtitle {
-  color: white;
+  color: black;
   font-size: 2rem;
   font-weight: 400;
   opacity: 0;
@@ -56,7 +61,7 @@ $quinternary: #6b6b6b;
 }
 
 .subtitle-2 {
-  color: white;
+  color: black;
   font-size: 2rem;
   font-weight: 400;
   opacity: 0;
@@ -100,7 +105,7 @@ $quinternary: #6b6b6b;
   display: flex;
   flex-direction: row;
   flex-grow: 1;
-  background-color: $quaternary;
+  background-color: $tertiary;
   color: $secondary;
 }
 
@@ -113,42 +118,64 @@ $quinternary: #6b6b6b;
 
 // ? Form
 .form-main {
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  background-color: $tertiary;
+}
+
+.form-header,
+.form-titles {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $primary;
+  justify-content: flex-start;
+  margin-left: 50px
+}
+
+.form-titles {
+  font-size: 1.5rem;
+  margin-left: 10px;
 }
 
 .form-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  // align-items: center;
   margin: 30px;
-  width: 300px;
-  padding: 40px 10px 20px 10px;
+  // width: 300px;
+  padding: 0px 10px 20px 10px;
   border-radius: 18px;
-  background-color: $quaternary;
+  background-color: $tertiary;
   border: 1px $quinternary;
 
+  .form-fields {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: 2px solid $quaternary ;
+    padding: 30px;
+  }
+
   form {
-    width: 80%;
+    // width: 80%;
 
     select {
+      display: flex;
       margin-left: 20px;
       margin-right: 20px;
       font-family: 'Roboto Slab', serif;
-      color: grey;
+      color: $secondary;
       border: 1px lightgrey solid;
       line-height: 1;
       padding: 10px;
       border-radius: 4px;
-      background-color: $quaternary;
+      background-color: $tertiary;
+      justify-content: flex-start;
     }
 
 
     label {
       text-align: center;
-      color: $quinternary;
+      color: $tertiary;
     }
 
     #imageupload {
@@ -167,13 +194,20 @@ $quinternary: #6b6b6b;
     input {
       width: 100%;
       background-color: white;
-      border-color: 1px grey solid !important;
+      border-color: 1px red !important;
     }
   }
 
   .btn {
     margin-top: 30px;
     align-self: flex-end;
+    background-color: $secondary;
+    border: 2px solid $secondary;
+  }
+
+  .btn:hover {
+    background-color: $tertiary;
+    color: $secondary;
   }
 
 }
@@ -184,4 +218,15 @@ legend {
 
 legend {
   font-weight: 10px;
+}
+
+// .single-page-row {
+//   display: inline-block;
+// }
+
+.single-page-container {
+  display: flex;
+  justify-content: center;
+  // flex-shrink: calc();
+  flex: 1;
 }
