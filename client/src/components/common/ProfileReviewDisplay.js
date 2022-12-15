@@ -12,7 +12,7 @@ import ListGroupItem from 'react-bootstrap/esm/ListGroupItem'
 const ProfileReviewDisplay = ({ errors, userId }) => {
 
   const [reviews, setReviews] = useState([])
-
+  const [user, setUser] = useState([])
   useEffect(() => {
     const getApps = async () => {
       try {
@@ -23,7 +23,7 @@ const ProfileReviewDisplay = ({ errors, userId }) => {
         })
         let validReviews = []
         for (const review of data) {
-          if (review.owner === parseInt(userId)) {
+          if (review.owner.id === parseInt(userId)) {
             validReviews.push(review)
           }
         }
@@ -34,7 +34,7 @@ const ProfileReviewDisplay = ({ errors, userId }) => {
       }
     }
     getApps()
-  }, [])
+  }, [userId])
 
 
   const deleteReview = async (id) => {
@@ -75,15 +75,15 @@ const ProfileReviewDisplay = ({ errors, userId }) => {
                 key={id}
                 to={`/apps/${app}`}>
                 <ListGroupItem className='d-flex review-list list-group-item-action mt-2 review-profile-item'>
-                  <div>
-                    {/* <img className='list-group-img img-thumbnail' src={locationImage}></img> */}
-                  </div>
+                  {/* <div>
+                    <img className='list-group-img img-thumbnail' src={app.logo} alt={app.name}></img>
+                  </div> */}
                   <div className='d-flex flex-column align-items-start ms-3'>
                     <h4>{app.name}</h4>
-                    <p className='d-none d-sm-block'>{text}</p>
+                    <p>{text}</p>
                   </div>
                   <div className='d-flex flex-column buttons align-self-start'>
-                    <Link onClick={() => deleteReview(id)} className='btn mt-3 align-self-end' id="del2-btn" to="">Delete</Link>
+                    <Link onClick={() => deleteReview(id)} className='btn mt-3 align-self-end' id="del2-btn" to="">X</Link>
                   </div>
                 </ListGroupItem>
               </Link>

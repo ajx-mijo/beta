@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .serializers.common import ReviewSerializer
+from .serializers.populated import PopulatedReviewSerializer
 from .models import Review
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -30,7 +31,7 @@ class ReviewListView(APIView):
     def get(self, _request):
         reviews = Review.objects.all()
         print('App queryset ->', reviews)
-        serialized_reviews = ReviewSerializer(reviews, many=True)
+        serialized_reviews = PopulatedReviewSerializer(reviews, many=True)
         print('Serialized app data ->', serialized_reviews.data)
         return Response(serialized_reviews.data, status.HTTP_200_OK)
 

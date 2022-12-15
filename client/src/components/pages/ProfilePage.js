@@ -4,7 +4,6 @@ import { Link, useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 import { getToken, handleLogout } from '../common/Authentication'
-import UploadImage from '../../helpers/ImageUpload'
 
 import ProfileReviewDisplay from '../common/ProfileReviewDisplay'
 import ProfileAppDisplay from '../common/ProfileAppDisplay'
@@ -12,8 +11,6 @@ import ProfileAppDisplay from '../common/ProfileAppDisplay'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
-import Tab from 'react-bootstrap/Tab'
-import Tabs from 'react-bootstrap/Tabs'
 
 
 
@@ -23,11 +20,6 @@ const ProfilePage = () => {
   const [user, setUser] = useState([])
   const [profile, setProfile] = useState([])
   const [errors, setErrors] = useState(false)
-
-  const [formData, setFormData] = useState({
-    image: '',
-    userBio: '',
-  })
 
   // ! Location
   const { userId } = useParams()
@@ -70,33 +62,6 @@ const ProfilePage = () => {
     }
     getProfile()
   }, [user])
-
-  const handleChange = async (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value })
-  }
-
-
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-    try {
-      await axios.put(`/api/auth/${userId}/`, formData, {
-        headers: {
-          Authorization: `Bearer ${getToken()}`,
-        },
-      })
-      const { data } = await axios.get(`/api/auth/${userId}/`, {
-        headers: {
-          Authorization: `Bearer ${getToken()}`,
-        },
-      })
-      setUser(data)
-      setFormData({ ...formData, [event.target.name]: event.target.value })
-    } catch (err) {
-      console.log(err)
-    }
-  }
-
-
 
   return (
     <>

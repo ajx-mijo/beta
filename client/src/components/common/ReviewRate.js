@@ -80,7 +80,7 @@ const ReviewInput = ({ app, setApp }) => {
                   <input type='range' name='accessibility_rating' id='rating-range' min="0" max="5" onChange={handleChange} value={formFields.accessibility_rating}></input>
                 </div>
                 <div className='performance-rating-container'>
-                  <p id='rating-title'>Performance Rating: {formFields.perforamnce_rating}</p>
+                  <p id='rating-title'>Performance Rating: {formFields.performance_rating}</p>
                   <input type='range' name='performance_rating' id='rating-range' min="0" max="5" onChange={handleChange} value={formFields.performance_rating}></input>
                 </div>
               </div>
@@ -111,7 +111,7 @@ const ReviewInput = ({ app, setApp }) => {
               const { _id } = rev
               return (
                 <div className='individual-review' key={_id}>
-                  <h4 id='rev-name'>{rev.owner}</h4>
+                  <h4 id='rev-name'>{rev.owner.username}</h4>
                   <span className='rating'> UX: {rev.ux_rating}&#9733;</span>
                   <span className='rating'> Design: {rev.design_rating}&#9733;</span>
                   <span className='rating'> Performance: {rev.performance_rating}&#9733;</span>

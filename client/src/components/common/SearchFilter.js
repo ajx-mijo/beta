@@ -13,19 +13,6 @@ const SearchFilter = ({ apps, filteredApps, setFilteredApps }) => {
       console.log('App sectors->', app.sectors.name)
       const { sectors } = app
       console.log('Sectors->', sectors)
-      // let arr = []
-      // for (const sector of sectors) {
-      //   if (sector.name === input.name) {
-      //     arr.push(sector)
-      //   }
-      // }
-      // console.log('Arr->', arr)
-      // sectors.filter((sector) => {
-      //   return (
-      //     regex.test(app.name) &&
-      //     (sectors.name === input.sectors || input.sectors === 'All')
-      //   )
-      // })
       return (
         regex.test(app.name) &&
         (app.sectors.name === input.sectors || input.sectors === 'All')

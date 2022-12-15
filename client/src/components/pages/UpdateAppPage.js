@@ -38,10 +38,15 @@ const UpdateAppPage = () => {
     const getApp = async () => {
       try {
         const { data } = await axios.get(`/api/apps/${appId}/`)
-        //populate for fields with single location info
-        // console.log('Location owner => ', data.addedBy.id)
-        // console.log('Payload --> ', getPayload())
         console.log(data)
+        const updatedSectors = data.sectors.map((sector) => {
+          return { value: sector.id, label: sector.name }
+        })
+        data.sectors = updatedSectors
+        const updatedTools = data.tools.map((tool) => {
+          return { value: tool.id, label: tool.name }
+        })
+        data.tools = updatedTools
         setApp(data)
         setFormFields(data)
       } catch (err) {
@@ -54,8 +59,11 @@ const UpdateAppPage = () => {
   // send off form data to API
   const handleSubmit = async (e) => {
     e.preventDefault()
+    const formattedToolFields = formFields.tools.map((tool) => tool.value)
+    const formattedSectorFields = formFields.sectors.map((sector) => sector.value)
+    const updatedFormFields = { ...formFields, sectors: formattedSectorFields, tools: formattedToolFields }
     try {
-      const { data } = await axios.put(`/api/apps/${appId}/`, formFields, {
+      const { data } = await axios.put(`/api/apps/${appId}/`, updatedFormFields, {
         headers: {
           Authorization: `Bearer ${getToken()}`,
         },

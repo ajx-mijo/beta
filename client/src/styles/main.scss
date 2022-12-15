@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap');
+
 $primary: #353535;
 $secondary: #1b55fe;
 $tertiary: #ffffff;
@@ -5,120 +7,210 @@ $quaternary: #272727;
 $quinternary: #6b6b6b;
 $six: rgb(220, 28, 28);
 
+* {
+  font-family: 'Atkinson Hyperlegible', sans-serif;
+}
+
 :root {
   --typewriterSpeed: 2s;
   --typewriterCharacters: 15;
 }
+
+
 
 body {
   background-color: $tertiary;
   color: $secondary;
 }
 
-.lp-text {
-  display: flex;
-  // align-items: center;
-  justify-content: center;
-  flex-direction: column;
-
-  .lp-title {
-    font-size: clamp(1rem, 3vw + 1rem, 4rem);
-    position: relative;
-    font-family: "Source Code Pro", monospace;
-    position: relative;
-    width: max-content;
-  }
-}
-
-.lp-title::before,
-.lp-title::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-.lp-title::before {
-  background: $tertiary;
-  animation: typewriter var(--typewriterSpeed) steps(var(--typewriterCharacters)) 1s forwards;
-}
-
-.lp-title::after {
-  width: 0.125em;
-  background: $tertiary;
-  animation: typewriter var(--typewriterSpeed) steps(var(--typewriterCharacters)) 1s forwards,
-    blink 750ms steps(var(--typewriterCharacters)) infinite;
-  color: #272727;
-}
-
-.subtitle {
-  color: black;
-  font-size: 2rem;
-  font-weight: 400;
-  opacity: 0;
-  transform: translateY(3rem);
-  animation: fadeInLeft 2s ease calc(var(--typewriterSpeed) + 2s) forwards;
-}
-
-.subtitle-2 {
-  color: black;
-  font-size: 2rem;
-  font-weight: 400;
-  opacity: 0;
-  transform: translateY(3rem);
-  animation: fadeInLeft 2s ease calc(var(--typewriterSpeed) + 4s) forwards;
-}
-
-@keyframes typewriter {
-  to {
-    left: 100%;
-  }
-}
-
-@keyframes blink {
-  to {
-    background: transparent;
-  }
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
+// ? Landing Page
 .landing-page {
   min-height: 100vh;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-grow: 1;
+  background-color: $tertiary;
+  color: $secondary;
+  padding: 0px;
+
+  .lp-img {
+    padding-left: 40px;
+  }
+
+  .intro-lp {
+    display: flex;
+
+
+    .lp-text {
+      display: flex;
+      // align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      .lp-title {
+        font-size: clamp(1rem, 3vw + 1rem, 4rem);
+        position: relative;
+        font-family: "Source Code Pro", monospace;
+        position: relative;
+        width: max-content;
+      }
+    }
+
+    .lp-title::before,
+    .lp-title::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    .lp-title::before {
+      background: $tertiary;
+      animation: typewriter var(--typewriterSpeed) steps(var(--typewriterCharacters)) 1s forwards;
+    }
+
+    .lp-title::after {
+      width: 0.125em;
+      background: $tertiary;
+      animation: typewriter var(--typewriterSpeed) steps(var(--typewriterCharacters)) 1s forwards,
+        blink 1000ms steps(var(--typewriterCharacters)) infinite;
+    }
+
+    .subtitle {
+      color: black;
+      font-size: 1.5rem;
+      font-weight: 400;
+      opacity: 0;
+      transform: translateY(3rem);
+      animation: fadeInLeft 2s ease calc(var(--typewriterSpeed) + 2s) forwards;
+    }
+
+    .subtitle-2 {
+      color: black;
+      font-size: 1.5rem;
+      font-weight: 400;
+      opacity: 0;
+      transform: translateY(3rem);
+      animation: fadeInLeft 2s ease calc(var(--typewriterSpeed) + 4s) forwards;
+    }
+
+    @keyframes typewriter {
+      to {
+        left: 100%;
+      }
+    }
+
+    @keyframes blink {
+      to {
+        background: $quinternary;
+      }
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+
+  .lp-icon-container {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    border-top: 4px solid $secondary;
+    border-bottom: 4px solid $secondary;
+
+    #icon-container {
+      display: flex;
+      justify-content: center;
+      width: 33%;
+
+      .icon {
+        padding: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .icon-text {
+          padding-top: 10px;
+          color: #272727;
+          font-size: 15px;
+          text-align: left;
+          text-justify: inter-word;
+        }
+      }
+    }
+  }
+}
+
+.lp-login-register-container {
+  display: flex;
+  justify-content: space-evenly;
+
+  .lp-second-image-container {
+    border: 3px solid $secondary;
+    border-radius: 50%;
+    padding: 100px;
+    margin: 40px 80px 80px 0px;
+  }
+
+  .lp-info-button-container {
+    margin: 100px 20px 80px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    .lp-info-text {
+      color: $primary;
+      font-size: 18px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+  }
+}
+
+#lp-btn {
+  margin-top: 15px;
+  border: 2px solid $secondary;
+  background-color: $secondary;
+  color: $tertiary;
+  min-width: 110px;
+  max-width: 300px;
+}
+
+#lp-btn:hover {
   background-color: $tertiary;
   color: $secondary;
 }
 
 .navbar-container {
   background-color: $tertiary;
+  border-bottom: 2px solid $secondary;
 }
 
 
 
 
-// ? Form
+// ? CRUD Forms
 .form-main {
   // display: flex;
   // flex-direction: column;
@@ -225,6 +317,13 @@ legend {
 // .single-page-row {
 //   display: inline-block;
 // }
+// .props-name-container {
+//   color: $tertiary;
+// }
+
+// .props-name {
+//   color: $secondary;
+// }
 
 .single-page-container {
   display: flex;
@@ -234,7 +333,12 @@ legend {
 }
 
 
-// * Profile Page
+// ? Profile Page
+
+.profile-page-container {
+  min-height: 100vh;
+}
+
 .profile-container {
   .user-profile-content {
     display: flex;
@@ -259,7 +363,8 @@ legend {
     align-items: flex-start;
 
     .profile-bio {
-      font-size: 0.8em;
+      font-size: 1em;
+      color: $primary;
       text-align: start;
     }
   }
@@ -327,4 +432,80 @@ legend {
   .profile-app-image {
     max-height: 100px;
   }
+}
+
+.user-reviews {
+  margin-bottom: 30px;
+}
+
+// ? Footer
+
+.footer-container {
+  border-top: 1px solid $secondary;
+}
+
+@media (max-width: 992px) {
+  .lp-img {
+    display: none;
+  }
+
+  .landing-page {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .intro-lp {
+    margin-top: 40px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .lp-text {
+    align-items: center;
+  }
+
+  .subtitle,
+  .subtitle-2 {
+    font-size: 18px !important;
+  }
+
+  .lp-second-image-container {
+    display: none;
+  }
+
+  #lp-btn {
+    margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .lp-icon-container {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .icon {
+    padding: 0px !important;
+    margin: 0px;
+  }
+}
+
+@media (max-width: 576px) {
+  .site-info-container {
+    margin-left: 50px;
+  }
+
+  .lp-info-text {
+    font-size: 12px;
+  }
+
+  .subtitle,
+  .subtitle-2 {
+    font-size: 14px !important;
+  }
+
 }

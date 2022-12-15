@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 
-
 // Imports
 import axios from 'axios'
 
@@ -13,7 +12,7 @@ const GetAllTools = () => {
     const getData = async () => {
       try {
         const { data } = await axios.get('/api/tools/')
-        // console.log(data)
+        console.log('All tools->', data)
         setAllTools(data)
       } catch (error) {
         console.log(error.message)
