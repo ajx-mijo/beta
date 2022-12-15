@@ -332,6 +332,42 @@ legend {
   flex: 1;
 }
 
+// ? Login/Register Forms
+
+.login-page,
+.register-page {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  min-height: 100vh;
+
+  .login-register-text-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .login-register-text {
+      font-size: 16rem;
+      font-weight: 800;
+    }
+  }
+
+  #login-register-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .form-container-outer {
+      border: 2px solid $secondary;
+      border-radius: 10px;
+      padding: 0px 15px 0px 15px;
+      // margin-bottom: 240px;
+    }
+  }
+}
+
 
 // ? Profile Page
 
@@ -445,6 +481,8 @@ legend {
 }
 
 @media (max-width: 992px) {
+
+  // ? Landing-Page
   .lp-img {
     display: none;
   }
@@ -478,9 +516,21 @@ legend {
   #lp-btn {
     margin-bottom: 50px;
   }
+
+  // ? Login/Register Forms
+
+
+  .login-register-text {
+    font-size: 10rem !important;
+    font-weight: 800;
+    padding-right: 40px;
+  }
+
 }
 
 @media (max-width: 768px) {
+
+  // ? Landing Page
   .lp-icon-container {
     flex-direction: column;
     align-items: center;
@@ -492,6 +542,19 @@ legend {
     padding: 0px !important;
     margin: 0px;
   }
+
+  // ? Login/Register Page
+  .login-page,
+  .register-page {
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 50px;
+  }
+
+  .login-register-text {
+    display: none;
+  }
+
 }
 
 @media (max-width: 576px) {
