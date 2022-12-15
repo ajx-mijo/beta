@@ -96,26 +96,6 @@ const ProfilePage = () => {
     }
   }
 
-  const deleteReview = async (locationId, reviewId) => {
-    try {
-      console.log('locationId -> ', locationId)
-      console.log('reviewId -> ', reviewId)
-      console.log('user Id ->', user.id)
-      const response = await axios.delete(`/api/reviews/${reviewId}/`, {
-        headers: {
-          Authorization: `Bearer ${getToken()}`,
-        },
-      })
-      const { data } = await axios.get(`/api/users/${userId}`, {
-        headers: {
-          Authorization: `Bearer ${getToken()}`,
-        },
-      })
-      setUser(data)
-    } catch (err) {
-      console.log(err)
-    }
-  }
 
 
   return (
@@ -125,36 +105,36 @@ const ProfilePage = () => {
           <Row className='text-center'>
             <Col md="4" className='text-center '>
               <div className='user-details d-flex flex-column align-items-center'>
-                <h3 className="mt-5 mb-5">{user.username}</h3>
-                <div className='profile-container'>
-                  <img className='img-thumbnail profile-pic' src={profile.profile_image} alt="User Profile" />
-                  <div className="upload-image-div d-flex  mt-2">
-                    <Link onClick={handleSubmit} className=' profile-btn btn align-self-center btn-md btn-sm mb-3' >Upload</Link>
-                    <UploadImage
-                      imageFormData={formData}
-                      setFormData={setFormData}
-                      handleSubmit={handleSubmit}
-                    />
+                <h3 className="mt-5 mb-5">Welcome back, {user.username}</h3>
+                {/* <h5>{profile.first_name}  {profile.last_name}</h5> */}
+                {!profile ?
+                  <Link className='profile-btn btn align-self-center btn-lg btn-md mb-5' to={`/profile/${userId}/update`}>Update Profile</Link>
+                  :
+                  <div className='profile-container'>
+                    <img className='img-thumbnail profile-pic' src={profile.profile_image} alt="User Profile" />
+                    <div className="upload-image-div d-flex  mt-2">
+                    </div>
+                    <div className='user-profile-content'>
+                      <h5>{profile.current_role_title} | {profile.current_employer}</h5>
+                      <p className='profile-industry'>Years in Industry: {profile.years_exp}</p>
+                      <hr className='single-page-hr'></hr>
+                    </div>
+                    <div className='user-profile-bio'>
+                      <h5>Bio:</h5>
+                      <p className='profile-bio'>{profile.biography}</p>
+                    </div>
+                    <div className='mt-4 d-flex flex-column justify-content-center'>
+                      <Link className='profile-btn btn align-self-center btn-lg btn-md mb-5' to="/login" onClick={() => handleLogout(navigate)}>Logout</Link>
+                      <Link className='profile-btn btn align-self-center btn-lg btn-md mb-5' to={`/profile/${userId}/update`}>Update Profile</Link>
+                    </div>
                   </div>
-                  <div className='user-profile-content'>
-                    <h5>{profile.current_role_title} | {profile.current_employer}</h5>
-                    <p>Years in Industry: {profile.years_exp}</p>
-                    <h5>{profile.first_name}  {profile.last_name}</h5>
-                  </div>
-                  <div className='user-profile-bio'>
-                    <h5>Bio:</h5>
-                    <p>{profile.biography}</p>
-                  </div>
-                  <div className='mt-4 d-flex flex-column justify-content-center'>
-                    <Link className='profile-btn btn align-self-center btn-lg btn-md mt-5 mb-5' to="/login" onClick={() => handleLogout(navigate)}>Logout</Link>
-                  </div>
-                </div>
+                }
               </div>
             </Col>
             <Col md="8">
               <div className='profile-page-app-title'>
                 <h3 className="mt-5 mb-5">Your Apps</h3>
-                <Link className='profile-btn btn align-self-center btn-lg btn-md mt-5 mb-3' to="/apps/add" >Add New Project</Link>
+                <Link className='profile-btn btn align-self-center btn-lg btn-md mt-4 mb-4' to="/apps/add" >Add New Project</Link>
               </div>
               <div className='user-reviews'>
                 <ProfileAppDisplay errors={errors} userId={userId} />

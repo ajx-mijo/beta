@@ -3,7 +3,7 @@ import GetAllTools from '../../helpers/GetAllTools'
 import ImageUpload from '../../helpers/ImageUpload'
 import LogoUpload from '../../helpers/LogoUpload'
 
-const AppForm = ({ app, handleSubmit, formFields, setFormFields, errors, setErrors }) => {
+const UpdateAppForm = ({ app, handleSubmit, formFields, setFormFields, errors, setErrors }) => {
 
 
   const handleChange = (e) => {
@@ -243,4 +243,4 @@ const AppForm = ({ app, handleSubmit, formFields, setFormFields, errors, setErro
   )
 }
 
-export default AppForm
+export default UpdateAppForm

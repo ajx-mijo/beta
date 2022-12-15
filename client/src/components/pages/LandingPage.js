@@ -25,7 +25,7 @@ const LandingPage = () => {
 
         <Container className="landing-page">
           <div className="lp-text">
-            <h1 className="lp-title">Welcome to App Overflow</h1>
+            <h1 className="lp-title">Welcome to Beta</h1>
             <p className="subtitle">The online peer-review community for Developers</p>
             <p className="subtitle-2">A space to share, learn and engage with the Software world</p>
             <Button id="hero-btn" className="btn btn-primary btn-lg" onClick={() => navigateToAppMultiPage()}>Begin discovering Apps</Button>

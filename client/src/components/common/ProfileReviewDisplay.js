@@ -36,28 +36,54 @@ const ProfileReviewDisplay = ({ errors, userId }) => {
     getApps()
   }, [])
 
+
+  const deleteReview = async (id) => {
+    try {
+      await axios.delete(`/api/reviews/${id}/`, {
+        headers: {
+          Authorization: `Bearer ${getToken()}`,
+        },
+      })
+      const { data } = await axios.get('/api/reviews/', {
+        headers: {
+          Authorization: `Bearer ${getToken()}`,
+        },
+      })
+      let validReviews = []
+      for (const review of data) {
+        if (review.owner === parseInt(userId)) {
+          validReviews.push(review)
+        }
+      }
+      console.log('Reviews ->', validReviews)
+      setReviews(validReviews)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     <>
       {reviews ? (
         <ListGroup className='ms-1'>
           {reviews.map(review => {
-            const { text, ux_rating, design_rating, accessibility_rating, performance_rating, app } = review
+            const { text, ux_rating, design_rating, accessibility_rating, performance_rating, app, id } = review
             // return reviews.map(review => {
             return (
               <Link
                 className="text-decoration-none"
-                key={review._id}
+                key={id}
                 to={`/apps/${app}`}>
                 <ListGroupItem className='d-flex review-list list-group-item-action mt-2 review-profile-item'>
                   <div>
                     {/* <img className='list-group-img img-thumbnail' src={locationImage}></img> */}
                   </div>
                   <div className='d-flex flex-column align-items-start ms-3'>
-                    <h4>{app}</h4>
+                    <h4>{app.name}</h4>
                     <p className='d-none d-sm-block'>{text}</p>
                   </div>
                   <div className='d-flex flex-column buttons align-self-start'>
-                    {/* <Link onClick={() => deleteReview(locationId, review._id)} className='btn mt-3 align-self-end' id="del2-btn" to="">Delete</Link> */}
+                    <Link onClick={() => deleteReview(id)} className='btn mt-3 align-self-end' id="del2-btn" to="">Delete</Link>
                   </div>
                 </ListGroupItem>
               </Link>

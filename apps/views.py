@@ -64,7 +64,7 @@ class AppIndiView(APIView):
         if app.owner != request.user:
             raise PermissionDenied('Unauthorized')
         try:
-            updated_app = PopulatedAppSerializer(
+            updated_app = AppSerializer(
                 app, request.data, partial=True)
             if updated_app.is_valid():
                 updated_app.save()

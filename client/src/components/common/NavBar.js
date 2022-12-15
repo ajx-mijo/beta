@@ -6,7 +6,7 @@ import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 
 import { isAuthenticated, handleLogout, getUserId } from './Authentication'
-import Logo from '../images/placeholderLogo.png'
+import Logo from '../images/BetaLogoLarge2.png'
 // import { useState } from 'react'
 
 //Custom imports 

@@ -13,6 +13,12 @@ const ProfileAppDisplay = ({ errors, userId }) => {
 
   const [apps, setApps] = useState([])
 
+
+  const style = {
+    display: "flex",
+    alignItems: "center"
+  }
+
   useEffect(() => {
     const getApps = async () => {
       try {
@@ -36,6 +42,30 @@ const ProfileAppDisplay = ({ errors, userId }) => {
     getApps()
   }, [])
 
+  const deleteApp = async (id) => {
+    try {
+      await axios.delete(`/api/apps/${id}/`, {
+        headers: {
+          Authorization: `Bearer ${getToken()}`,
+        },
+      })
+      const { data } = await axios.get('/api/apps/', {
+        headers: {
+          Authorization: `Bearer ${getToken()}`,
+        },
+      })
+      let validApps = []
+      for (const app of data) {
+        if (app.owner === parseInt(userId)) {
+          validApps.push(app)
+        }
+      }
+      setApps(validApps)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     <>
       {apps ? (
@@ -47,16 +77,21 @@ const ProfileAppDisplay = ({ errors, userId }) => {
                 className="text-decoration-none"
                 key={id}
                 to={`/apps/${id}`}>
-                <ListGroupItem className='d-flex review-list list-group-item-action mt-2 review-profile-item'>
+                <ListGroupItem className='d-flex review-list list-group-item-action mt-2 review-profile-item list-group-item'>
+                  <div className='profile-app-content'>
+                    <div classname="profile-app-image-container" style={style}>
+                      <img className='list-group-img img-thumbnail profile-app-image' src={logo} alt={name} height='100' width='100'></img>
+                    </div>
+                    <div className='d-flex flex-column align-items-start ms-3 profile-app-name'>
+                      <h4>{name}</h4>
+                      <p className='d-none d-sm-block'>{version}</p>
+                    </div>
+                  </div>
                   <div>
-                    <img className='list-group-img img-thumbnail' src={logo} alt={name} height='50' width='50'></img>
+                    <Link className='profile-btn btn align-self-end btn-lg btn-md mt-4 mb-4' to={`/apps/${id}/update`}>Edit</Link>
                   </div>
-                  <div className='d-flex flex-column align-items-start ms-3'>
-                    <h4>{name}</h4>
-                    <p className='d-none d-sm-block'>{version}</p>
-                  </div>
-                  <div className='d-flex flex-column buttons align-self-start'>
-                    {/* <Link onClick={() => deleteReview(locationId, review._id)} className='btn mt-3 align-self-end' id="del2-btn" to="">Delete</Link> */}
+                  <div className='delete-app-profile-btn'>
+                    <Link onClick={() => deleteApp(id)} className='btn mt-3 align-self-end' id="del2-btn" to=""><p className='delete-app-btn'>X</p></Link>
                   </div>
                 </ListGroupItem>
               </Link>
@@ -67,7 +102,8 @@ const ProfileAppDisplay = ({ errors, userId }) => {
         <h2>Error...</h2>
       ) : (
         <h2>No apps</h2>
-      )}
+      )
+      }
     </>
   )
 }

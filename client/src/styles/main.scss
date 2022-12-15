@@ -3,10 +3,11 @@ $secondary: #1b55fe;
 $tertiary: #ffffff;
 $quaternary: #272727;
 $quinternary: #6b6b6b;
+$six: rgb(220, 28, 28);
 
 :root {
   --typewriterSpeed: 2s;
-  --typewriterCharacters: 23;
+  --typewriterCharacters: 15;
 }
 
 body {
@@ -49,6 +50,7 @@ body {
   background: $tertiary;
   animation: typewriter var(--typewriterSpeed) steps(var(--typewriterCharacters)) 1s forwards,
     blink 750ms steps(var(--typewriterCharacters)) infinite;
+  color: #272727;
 }
 
 .subtitle {
@@ -233,8 +235,96 @@ legend {
 
 
 // * Profile Page
+.profile-container {
+  .user-profile-content {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+
+    .profile-industry {
+      color: black;
+    }
+
+    .single-page-hr {
+      color: $secondary;
+      background-color: #1b55fe;
+      min-width: 100%;
+      min-height: 2px;
+    }
+  }
+
+  .user-profile-bio {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .profile-bio {
+      font-size: 0.8em;
+      text-align: start;
+    }
+  }
+
+  .profile-btn {
+    border: 2px solid $six;
+    background-color: $six;
+    color: $tertiary;
+  }
+
+  .profile-btn:hover {
+    background-color: $tertiary;
+    color: $six;
+  }
+}
+
 
 .profile-page-app-title {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
+
+  .profile-btn {
+    border: 2px solid $secondary;
+    background-color: $secondary;
+    color: $tertiary;
+  }
+
+  .profile-btn:hover {
+    background-color: $tertiary;
+    color: $secondary;
+  }
+}
+
+
+
+.profile-app-name {
+  padding-top: 20px;
+}
+
+
+.review-profile-item {
+  display: flex !important;
+  justify-content: space-between;
+
+  .profile-app-content {
+    display: flex;
+  }
+
+  #del2-btn {
+    font-size: 2rem;
+  }
+
+  #del2-btn:hover {
+    color: red;
+    text-decoration: solid;
+    font-size: 2.2rem;
+  }
+}
+
+.list-group-item {
+  max-height: 150px;
+  min-height: 120px;
+
+  .profile-app-image {
+    max-height: 100px;
+  }
 }
