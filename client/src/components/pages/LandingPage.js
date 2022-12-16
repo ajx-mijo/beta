@@ -15,14 +15,6 @@ import PhotoTwo from '../images/lp-2.png'
 const LandingPage = () => {
   const navigate = useNavigate()
 
-  // const navigateToLogin = () => {
-  //   navigate('/login')
-  // }
-  // const navigateToRegister = () => {
-  //   navigate('/register')
-  // }
-
-
   const navigateToAppMultiPage = () => {
     navigate('/apps')
   }

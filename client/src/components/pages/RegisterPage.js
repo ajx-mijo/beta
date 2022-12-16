@@ -8,6 +8,7 @@ const RegisterPage = () => {
 
   const navigate = useNavigate()
   const [errors, setErrors] = useState('')
+
   const [formFields, setFormFields] = useState({
     email: "",
     username: "",
@@ -22,9 +23,8 @@ const RegisterPage = () => {
       await axios.post('api/auth/register/', formFields)
       navigate('/login')
     } catch (error) {
-      console.log(error)
-      setErrors(error.response.data.detail)
-      console.log('ERRORR->', error.response.data.detail)
+      console.log('Register error ->', error)
+      setErrors(error.response.data)
     }
   }
 
@@ -52,7 +52,6 @@ const RegisterPage = () => {
                   placeholder="Email *"
                   value={formFields.email}
                 />
-                {errors && errors.email && <small className='text-danger'>{errors.email}</small>}
                 <input
                   required
                   className='form-control mt-3 mb-3'
@@ -62,7 +61,7 @@ const RegisterPage = () => {
                   placeholder="Username *"
                   value={formFields.username}
                 />
-                {errors && errors.username && <small className='text-danger'>{errors.username}</small>}
+                {/* {errors && <small className='text-danger'>{'Username already taken'}</small>} */}
                 <input
                   required
                   className='form-control mt-3 mb-3'
@@ -72,18 +71,19 @@ const RegisterPage = () => {
                   placeholder="Password *"
                   value={formFields.password}
                 />
-                {errors && errors.password && <small className='text-danger'>{errors.password}</small>}
                 <input
                   required
-                  className='form-control mb-5'
+                  className='form-control mb-3'
                   type="password"
                   name="password_confirmation"
                   onChange={handleChange}
                   placeholder="Confirm password *"
                   value={formFields.password_confirmation}
                 />
-                {errors && errors.password_confirmation && <small className='text-danger'>{errors.password_confirmation}</small>}
-                <button to={'/login'} className="btn btn-danger btn-lg mt-3 mb-3">Register</button>
+                {errors && <small className='text-danger'>{'Passwords do not match'}</small>}
+                <div className='login-btn'>
+                  <button to={'/login'} className="btn btn-danger btn-lg mt-3 mb-3">Register</button>
+                </div>
               </form>
             </div>
           </div>

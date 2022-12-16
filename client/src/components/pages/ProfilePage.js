@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import { useState, useEffect } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
@@ -20,7 +21,7 @@ const ProfilePage = () => {
   const [user, setUser] = useState([])
   const [profile, setProfile] = useState([])
   const [errors, setErrors] = useState(false)
-
+  const [profileNumber, setProfileNumber] = useState()
   // ! Location
   const { userId } = useParams()
 
@@ -49,8 +50,7 @@ const ProfilePage = () => {
   useEffect(() => {
     const getProfile = async () => {
       try {
-        console.log('User profile->', user.user_profile[0])
-        const { data } = await axios.get(`/api/user_profile/${user.user_profile[0]}/`, {
+        const { data } = await axios.get(`/api/user_profile/${profileNumber}/`, {
           headers: {
             Authorization: `Bearer ${getToken()}`,
           },
@@ -61,7 +61,16 @@ const ProfilePage = () => {
       }
     }
     getProfile()
+  }, [profileNumber])
+
+  useEffect(() => {
+    const profileNum = user.user_profile
+    const profileNumber = { ...profileNum }
+    const target = Object.values(profileNumber)
+    const newTarget = parseInt(target.toString())
+    setProfileNumber(newTarget)
   }, [user])
+
 
   return (
     <>
@@ -71,29 +80,24 @@ const ProfilePage = () => {
             <Col md="4" className='text-center '>
               <div className='user-details d-flex flex-column align-items-center'>
                 <h3 className="mt-5 mb-5">Welcome back, {user.username}</h3>
-                {/* <h5>{profile.first_name}  {profile.last_name}</h5> */}
-                {!profile ?
-                  <Link className='profile-btn btn align-self-center btn-lg btn-md mb-5' to={`/profile/${userId}/update`}>Update Profile</Link>
-                  :
-                  <div className='profile-container'>
-                    <img className='img-thumbnail profile-pic' src={profile.profile_image} alt="User Profile" />
-                    <div className="upload-image-div d-flex  mt-2">
-                    </div>
-                    <div className='user-profile-content'>
-                      <h5>{profile.current_role_title} | {profile.current_employer}</h5>
-                      <p className='profile-industry'>Years in Industry: {profile.years_exp}</p>
-                      <hr className='single-page-hr'></hr>
-                    </div>
-                    <div className='user-profile-bio'>
-                      <h5>Bio:</h5>
-                      <p className='profile-bio'>{profile.biography}</p>
-                    </div>
-                    <div className='mt-4 d-flex flex-column justify-content-center'>
-                      <Link className='profile-btn btn align-self-center btn-lg btn-md mb-5' to="/login" onClick={() => handleLogout(navigate)}>Logout</Link>
-                      <Link className='profile-btn btn align-self-center btn-lg btn-md mb-5' to={`/profile/${userId}/update`}>Update Profile</Link>
-                    </div>
+                <div className='profile-container'>
+                  <img className='img-thumbnail profile-pic' id='profile-image' src={profile.profile_image} alt="No Profile Image" />
+                  <div className="upload-image-div d-flex  mt-2">
                   </div>
-                }
+                  <div className='user-profile-content'>
+                    <h5>{profile.current_role_title} | {profile.current_employer}</h5>
+                    <p className='profile-industry'>Years in Industry: {profile.years_exp}</p>
+                    <hr className='single-page-hr'></hr>
+                  </div>
+                  <div className='user-profile-bio'>
+                    <h5>Bio:</h5>
+                    <p className='profile-bio'>{profile.biography}</p>
+                  </div>
+                  <div className='mt-4 d-flex flex-column'>
+                    <Link className='profile-btn btn align-self-center btn-lg btn-md mb-5 profile-display-btn' id='update-profile-btn' to={`/profile/${profileNumber}/update`}>Update Profile</Link>
+                    <Link className='profile-btn btn align-self-center btn-lg btn-md mb-5 profile-display-btn' id='logout-profile-btn' to="/login" onClick={() => handleLogout(navigate)}>Logout</Link>
+                  </div>
+                </div>
               </div>
             </Col>
             <Col md="8">

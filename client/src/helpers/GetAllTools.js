@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 // Imports
 import axios from 'axios'
 
-const GetAllTools = () => {
+const GetAllYears = () => {
 
   const [allTools, setAllTools] = useState([])
   const [errors, setErrors] = useState(false)
@@ -39,4 +39,4 @@ const GetAllTools = () => {
   )
 }
 
-export default GetAllTools
+export default GetAllYears

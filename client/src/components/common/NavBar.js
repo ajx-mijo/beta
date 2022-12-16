@@ -1,20 +1,40 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+
+import axios from 'axios'
 
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 
-import { isAuthenticated, handleLogout, getUserId } from './Authentication'
-import Logo from '../images/BetaLogoLarge2.png'
-// import { useState } from 'react'
+import { isAuthenticated, handleLogout, getUserId, getToken } from './Authentication'
+import Logo from '../images/BetaLogoOfficial.png'
+
 
 //Custom imports 
 
 const NavBar = () => {
   // ! State
-  // const [userId, setUserId] = useState('')
+  const [user, setUser] = useState([])
 
+  const activeUser = getUserId()
+
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const { data } = await axios.get(`/api/auth/${activeUser}/`, {
+          headers: {
+            Authorization: `Bearer ${getToken()}`,
+          },
+        })
+        setUser(data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getUser()
+  }, [activeUser])
   // ! Navigation
   const navigate = useNavigate()
 
@@ -29,6 +49,17 @@ const NavBar = () => {
             className="d-inline-block align-center img-nav"
             alt="Logo"
           /></Navbar.Brand>
+          {isAuthenticated() ?
+            <>
+              <p className='navbar-username'>Logged in as:</p>
+              <Nav.Link as={Link} to={`/profile/${getUserId()}`} id="navbar-profile-name">
+                <p className='navbar-username' id="nav-user-link">{user.username}</p>
+              </Nav.Link>
+            </>
+            :
+            <>
+            </>
+          }
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse className="justify-content-end" if="basic-navbar-nav">
             <Nav>

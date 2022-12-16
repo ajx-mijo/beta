@@ -11,32 +11,24 @@ import { setToken } from '../common/Authentication'
 
 const LoginPage = () => {
 
-  // ! Location Variables
   const navigate = useNavigate()
 
-  // ! State
-  // Track state of following variables
+
   const [formFields, setFormFields] = useState({
     email: '',
     password: ''
   })
-
   const [errors, setErrors] = useState('')
 
-  // ! Executions
   // send off form data to our API
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
       const { data } = await axios.post('/api/auth/login/', formFields)
-      console.log('token->', data)
       setToken(data.token)
       navigate('/')
     } catch (error) {
-      console.log(error)
       setErrors(error.response.data.detail)
-      console.log('ERRORR->', error.response.data.detail)
-      // setError({ ...error, [e.target.name]: '', message: '' })
     }
   }
 
@@ -56,7 +48,6 @@ const LoginPage = () => {
             <h1 className="mt-5">Login</h1>
             <div className="form-container">
               <form onSubmit={handleSubmit}>
-                {/* Email */}
                 <input
                   required
                   className="form-control mt-3 mb-3"
@@ -66,21 +57,16 @@ const LoginPage = () => {
                   placeholder="Email *"
                   value={formFields.email}
                 />
-                {errors && errors.email && <small className='text-danger'>{errors.email}</small>}
-                {/* Password */}
                 <input
                   required
-                  className="form-control mt-3 mb-5"
+                  className="form-control mt-3 mb-3"
                   type="password"
                   name="password"
                   onChange={handleChange}
                   placeholder="Password *"
                   value={formFields.password}
                 />
-                {errors && errors.password && <small className='text-danger'>{errors.password}</small>}
-                {/* Error Message */}
                 {errors && <small className='text-danger'>{errors}</small>}
-                {errors && errors.message && <small className='text-danger'>{errors.message}</small>}
                 <div className='login-btn'>
                   <button to={'/'} className="btn btn-danger btn-lg mt-3 mb-3">Login</button>
                 </div>

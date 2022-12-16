@@ -7,7 +7,7 @@ import { getToken, isAuthenticated, getUserId, getPayload } from './Authenticati
 import Col from 'react-bootstrap/Col'
 
 
-const ReviewInput = ({ app, setApp }) => {
+const ReviewInput = ({ app, setApp, user }) => {
 
   const { appId } = useParams()
 
@@ -25,6 +25,7 @@ const ReviewInput = ({ app, setApp }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    console.log('Review->', e)
     try {
       await axios.post(`/api/reviews/`, formFields, {
         headers: {
@@ -61,6 +62,7 @@ const ReviewInput = ({ app, setApp }) => {
                 className='form-control'
                 type="text"
                 name="text"
+                rows='5'
                 onChange={handleChange}
                 placeholder="Type your review here: "
                 value={formFields.text}
@@ -85,7 +87,7 @@ const ReviewInput = ({ app, setApp }) => {
                 </div>
               </div>
               {errors && errors.text && <small className="text-danger">{errors.text}</small>}
-              <div className='rev-submit-container'>
+              <div className='review-submit-container'>
                 <button className='btn btn-primary' id='rev-submit-btn'>Submit</button>
               </div>
               <hr className='single-page-hr'></hr>
@@ -93,7 +95,7 @@ const ReviewInput = ({ app, setApp }) => {
           </div>
           :
           <div className='review-login-register'>
-            <p>Please Register or Login to leave a Review</p>
+            <p>Please Login or Register to leave a Review:</p>
             <div className='review-login-buttons'>
               <Link to={'/login'}>
                 <button className='btn btn-lg btn-danger' id='review-login-buttons'>Login</button>
@@ -111,12 +113,12 @@ const ReviewInput = ({ app, setApp }) => {
               const { _id } = rev
               return (
                 <div className='individual-review' key={_id}>
-                  <h4 id='rev-name'>{rev.owner.username}</h4>
+                  <h4 id='review-name'>{user.username}</h4>
                   <span className='rating'> UX: {rev.ux_rating}&#9733;</span>
                   <span className='rating'> Design: {rev.design_rating}&#9733;</span>
                   <span className='rating'> Performance: {rev.performance_rating}&#9733;</span>
                   <span className='rating'> Accessibility: {rev.accessibility_rating}&#9733;</span>
-                  <p>{rev.text}</p>
+                  <p className='rating-text'>{rev.text}</p>
                   <hr></hr>
                 </div>
               )

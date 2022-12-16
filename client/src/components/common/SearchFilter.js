@@ -1,21 +1,18 @@
 import { useEffect, useState } from 'react'
-import GetAllSectors from '../../helpers/GetAllSectors'
+import GetAllYears from '../../helpers/GetAllYears'
 
 const SearchFilter = ({ apps, filteredApps, setFilteredApps }) => {
   const [input, setInput] = useState({
     search: '',
-    sectors: 'All'
+    year: 'All'
   })
 
   useEffect(() => {
     const regex = new RegExp(input.search, 'i')
     const filteredArr = apps.filter((app) => {
-      console.log('App sectors->', app.sectors.name)
-      const { sectors } = app
-      console.log('Sectors->', sectors)
       return (
         regex.test(app.name) &&
-        (app.sectors.name === input.sectors || input.sectors === 'All')
+        (app.year === input.year || input.year === 'All')
       )
     })
     setFilteredApps(filteredArr)
@@ -37,18 +34,15 @@ const SearchFilter = ({ apps, filteredApps, setFilteredApps }) => {
           value={input.search}
         />
 
-        <select
+        {/* <select
           onChange={handleChange}
           name="version"
           id="filter"
           className="dropdown"
           value={input.version}
         >
-          <GetAllSectors />
-          {/* <option value="All">Select version</option>
-          <option value="v1.0">v1.0</option>
-          <option value="v1.5">v1.5</option> */}
-        </select>
+          <GetAllYears />
+        </select> */}
       </div>
     </>
   )

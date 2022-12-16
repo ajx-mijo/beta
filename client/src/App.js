@@ -26,7 +26,7 @@ function App() {
           <Route path='/register' element={<RegisterPage />} />
           <Route path='/apps/add' element={<AddAppPage />} />
           <Route path='/apps/:appId/update' element={<UpdateAppPage />} />
-          <Route path='/profile/:userId/update' element={<UpdateProfilePage />} />
+          <Route exact path='/profile/:profileId/update' element={<UpdateProfilePage />} />
           <Route path='/profile/:userId' element={<ProfilePage />} />
           <Route path='*' element={<NotFoundPage />} />
         </Routes>

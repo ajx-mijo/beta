@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { isOwner, getToken } from '../common/Authentication'
+import { isOwner, getToken, getUserId } from '../common/Authentication'
 
 
 import Container from 'react-bootstrap/Container'
@@ -18,9 +18,14 @@ import ReviewRate from '../common/ReviewRate'
 const AppSinglePage = () => {
 
   const [app, setApp] = useState(null)
-
+  const [user, setUser] = useState([])
+  const [errors, setErrors] = useState(false)
   // ! App
   const { appId } = useParams()
+
+  // const activeUser = getUserId()
+  // console.log('Active user->', activeUser)
+
   const navigate = useNavigate()
 
   // ! Execution
@@ -36,6 +41,22 @@ const AppSinglePage = () => {
     getApp()
   }, [appId])
 
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const { data } = await axios.get(`/api/auth/${app.owner}/`, {
+          headers: {
+            Authorization: `Bearer ${getToken()}`,
+          },
+        })
+        setUser(data)
+      } catch (error) {
+        console.log(error)
+        setErrors(true)
+      }
+    }
+    getUser()
+  }, [app])
 
   const deleteApp = async (e) => {
     try {
@@ -65,7 +86,9 @@ const AppSinglePage = () => {
                   <div className='single-page-rating'>
                   </div>
                 </div>
-                <div className='single-page-site-image'><img src={app.site_images} alt={app.name} width="1500" height="700" /></div>
+                <div className='single-page-site-image'>
+                  <img src={app.site_images} alt={app.name} className='single-page-image' />
+                </div>
                 <Tabs
                   defaultActiveKey="details"
                   id="fill-tab-example"
@@ -79,10 +102,7 @@ const AppSinglePage = () => {
                       <p className='app-description'>{app.description}</p>
                       <h5 className='mt-5 mb-3 new-features-title'>New Features:</h5>
                       <p className='app-description'>{app.new_features}</p>
-                      <h5 className='mt-5 mb-3 app-link'>Link: <a href={app.link} target="_blank" rel="noreferrer">{app.name}</a></h5>
-                      {/* <p>
-                        <a href={app.link} target="_blank" rel="noreferrer">{app.name}</a>
-                      </p> */}
+                      <h5 className='mt-5 mb-3 app-link'>Link: <a href={app.link} target="_blank" rel="noreferrer" className='single-page-link'>{app.name}</a></h5>
                       <hr className='single-page-hr'></hr>
                     </Col>
                     {isOwner(app.owner) &&
@@ -95,10 +115,13 @@ const AppSinglePage = () => {
                     }
                   </Tab>
                   <Tab eventKey="tools" title="Tools">
-                    <ToolDisplay app={app} />
+                    <h2 className=''>Tools:</h2>
+                    <div className='tool-display-container'>
+                      <ToolDisplay app={app} />
+                    </div>
                   </Tab>
                   <Tab eventKey="reviews" title="Reviews">
-                    <ReviewRate app={app} setApp={setApp} />
+                    <ReviewRate app={app} setApp={setApp} user={user} />
                   </Tab>
                 </Tabs>
               </>

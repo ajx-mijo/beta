@@ -1,10 +1,9 @@
-import GetAllSectors from '../../helpers/GetAllSectors'
-import GetAllTools from '../../helpers/GetAllTools'
+
 import ImageUpload from '../../helpers/ImageUpload'
 import LogoUpload from '../../helpers/LogoUpload'
 
-import ToolDropdown from '../../helpers/ToolDropdown'
-import SectorDropdown from '../../helpers/SectorDropdown'
+import UpdateToolDropdown from '../../helpers/UpdateToolDropdown'
+import UpdateSectorDropdown from '../../helpers/UpdateSectorDropdown'
 
 const UpdateAppForm = ({ app, handleSubmit, formFields, setFormFields, errors, setErrors }) => {
 
@@ -14,14 +13,6 @@ const UpdateAppForm = ({ app, handleSubmit, formFields, setFormFields, errors, s
     setFormFields({ ...formFields, [e.target.name]: e.target.name === 'tools' || e.target.name === 'sectors' ? [parseInt(e.target.value)] : e.target.value })
     setErrors({ ...errors, [e.target.name]: '', message: '' })
   }
-
-  // const formattingOptions = [...allTools]
-  // const formattedOptions = formattingOptions.map((option) => {
-  //   delete option.logo
-  //   delete option.id
-  //   return { ...option, value: option.name, label: option.name }
-  // })
-  // console.log('FormattedOptions ->', formattedOptions)
 
 
   return (
@@ -97,14 +88,14 @@ const UpdateAppForm = ({ app, handleSubmit, formFields, setFormFields, errors, s
           <div className='form-fields'>
             <p className='form-titles'>Select which tools you have used:</p>
             <div className='form-fields'>
-              <ToolDropdown setFormFields={setFormFields} defaultTools={formFields.tools} />
+              <UpdateToolDropdown setFormFields={setFormFields} defaultTools={formFields.tools} />
             </div>
             {errors && errors.tools && <small className='text-danger'>{errors.tools}</small>}
           </div>
           <div className='form-fields'>
             <p className='form-titles'>Select your project type:</p>
             <div className='form-fields'>
-              <SectorDropdown setFormFields={setFormFields} defaultSectors={formFields.sectors} />
+              <UpdateSectorDropdown setFormFields={setFormFields} defaultSectors={formFields.sectors} />
             </div>
             {errors && errors.sectors && <small className='text-danger'>{errors.sectors}</small>}
           </div>

@@ -29,16 +29,16 @@ const AddAppPage = () => {
   })
 
   const [errors, setErrors] = useState(null)
-  // const [location, setLocation] = useState(null)
 
   // ! Execution
   // send off form data to API
   const handleSubmit = async (e) => {
     e.preventDefault()
+    const formattedToolFields = formFields.tools.map((tool) => tool.value)
+    const formattedSectorFields = formFields.sectors.map((sector) => sector.value)
+    const updatedFormFields = { ...formFields, sectors: formattedSectorFields, tools: formattedToolFields }
     try {
-      console.log('FORM FIELDS', formFields)
-      console.log('GET TOKEN ->', getToken())
-      const { data } = await axios.post('/api/apps/', formFields, {
+      const { data } = await axios.post('/api/apps/', updatedFormFields, {
         headers: {
           Authorization: `Bearer ${getToken()}`,
         },
@@ -51,7 +51,6 @@ const AddAppPage = () => {
       console.log(err)
     }
   }
-
 
   return (
     <div className="site-wrapper">
@@ -67,7 +66,6 @@ const AddAppPage = () => {
         />
       </div>
     </div>
-
   )
 }
 

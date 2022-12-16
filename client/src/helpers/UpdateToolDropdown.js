@@ -3,7 +3,7 @@ import Select from 'react-select'
 import axios from 'axios'
 
 
-const ToolDropdown = ({ setFormFields, defaultTools }) => {
+const UpdateToolDropdown = ({ setFormFields, defaultTools }) => {
 
   const [tools, setTools] = useState({
     selectOptions: [],
@@ -32,7 +32,7 @@ const ToolDropdown = ({ setFormFields, defaultTools }) => {
     })
   }
   return (
-    <div>
+    <div className='dropdown'>
       {console.log('DefaultValues ->', defaultTools)}
       {defaultTools.length > 0 && <Select options={tools.selectOptions} onChange={handleChange} isMulti defaultValue={defaultTools} />}
       {
@@ -43,4 +43,4 @@ const ToolDropdown = ({ setFormFields, defaultTools }) => {
 }
 
 
-export default ToolDropdown
+export default UpdateToolDropdown

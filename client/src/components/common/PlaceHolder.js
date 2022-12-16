@@ -5,13 +5,13 @@ const PlaceHolder = () => {
 
   return (
     <>
-      <Card style={{ width: '80rem' }}>
-        <Card.Body>
+      <Card style={{ width: '80rem' }} className='placeholder-cc'>
+        <Card.Body className='app-card-header' id='index-header'>
           <Placeholder as={Card.Title} animation="glow">
             <Placeholder xs={12} />
           </Placeholder>
           <Placeholder as={Card.Text} animation="glow">
-            <Placeholder xs={12} /> <Placeholder xs={12} /> <Placeholder xs={12} />{' '}
+            <Placeholder xs={12} /> <Placeholder xs={12} /> <Placeholder xs={12} />
             <Placeholder xs={12} /> <Placeholder xs={12} />
           </Placeholder>
         </Card.Body>

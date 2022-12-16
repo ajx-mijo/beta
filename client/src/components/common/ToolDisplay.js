@@ -25,7 +25,7 @@ const ToolDisplay = ({ app }) => {
             <>
               {/* <h4>{tool.name}</h4> */}
               <div key={tool.id}>
-                <img src={tool.logo} alt='Developer tool logo' height={50} width={50} />
+                <img src={tool.logo} alt='Developer tool logo' id='tool-logo' />
               </div>
             </>
           )

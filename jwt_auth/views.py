@@ -35,7 +35,6 @@ class RegisterView(APIView):
             if user_to_register.is_valid():
                 user_to_register.save()
                 return Response('Registration Successful', status=status.HTTP_201_CREATED)
-            print('Hit here')
             return Response(user_to_register.errors, status.HTTP_422_UNPROCESSABLE_ENTITY)
         except Exception as e:
             print(e)
@@ -83,12 +82,14 @@ class UserDetailView(APIView):
             raise NotFound(str(e))
         except Exception as e:
             print('Error ->', e)
+            print('Hello 2')
             return Response(str(e), status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     def get(self, _request, pk):
         user = self.get_user(pk)
         print('User->', user)
         serialized_user = PopulatedUserSerializer(user)
+        print('Hello')
         print('Pop user ->', serialized_user)
         return Response(serialized_user.data)
 

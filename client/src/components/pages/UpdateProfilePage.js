@@ -13,6 +13,7 @@ const UpdateProfilePage = () => {
 
   const navigate = useNavigate()
 
+  const { profileId } = useParams()
 
   const owner = getUserId()
 
@@ -33,9 +34,13 @@ const UpdateProfilePage = () => {
 
   useEffect(() => {
     const getProfile = async () => {
+      console.log('Profile ID ->', profileId)
       try {
-        const { data } = await axios.get(`/api/profile/${owner}/`)
-        console.log(data)
+        const { data } = await axios.get(`/api/user_profile/${profileId}/`, {
+          headers: {
+            Authorization: `Bearer ${getToken()}`,
+          },
+        })
         setProfile(data)
         setFormFields(data)
       } catch (err) {
@@ -43,24 +48,24 @@ const UpdateProfilePage = () => {
       }
     }
     getProfile()
-  }, [owner])
+  }, [profileId])
 
-  // ! Execution
+
+
   // send off form data to API
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const { data } = await axios.post(`/api/user_profile/`, formFields, {
+      const { data } = await axios.put(`/api/user_profile/${profileId}/`, formFields, {
         headers: {
           Authorization: `Bearer ${getToken()}`,
         },
       })
-      console.log('Put app data ->', data)
       navigate(`/profile/${owner}`)
-    } catch (err) {
-      console.log('Update profile error->', err.response.data)
-      setErrors(err.response.data)
-      console.log(err)
+    } catch (error) {
+      console.log('Update profile error->', error.response.data)
+      setErrors(error.response.data)
+      console.log(error)
     }
   }
 

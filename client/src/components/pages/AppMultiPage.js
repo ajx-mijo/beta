@@ -46,22 +46,15 @@ const AppMultiPage = () => {
 
   return (
     <div className="site-wrapper">
-      <main className="location-index">
-        <Container className=" fluid char-container mt-4">
-          <SearchFilter
-            apps={apps}
-            filteredApps={filteredApps}
-            setFilteredApps={setFilteredApps}
-          />
-          {loading &&
-            filteredApps.map((app) => {
-              return (
-                <>
-                  <PlaceHolder />
-                </>
-              )
-            })
-          }
+      <main className="app-index">
+        <Container className="fluid char-container mt-4" id='index-page-container'>
+          <div className='index-search-filter-container'>
+            <SearchFilter
+              apps={apps}
+              filteredApps={filteredApps}
+              setFilteredApps={setFilteredApps}
+            />
+          </div>
           {filteredApps.length ? (
             <Row>
               {filteredApps.map((app) => {
@@ -70,15 +63,16 @@ const AppMultiPage = () => {
                   <Col key={id} xs="12" sm="12" className="char-card mb-4">
                     <Link className="text-decoration-none" to={`/apps/${id}`}>
                       <Card className="app-card">
-                        <Card.Body className="d-flex flex-column">
+                        <Card.Body>
                           <div className='app-card-header' id='index-header'>
                             <div className='index-page-logo'>
                               <img src={logo} alt={name} width="100" height="100" />
+                              <h4 className='card-version-index'><span className='index-version'>{version}</span></h4>
                             </div>
                             <div className='index-version-container'>
-                              <h4 className='card-version-index'><span className='index-version'>{version}</span></h4>
+                              <h3 className='index-name'>{name}</h3>
                               <h5>New Features:</h5>
-                              <p>{new_features}</p>
+                              <p className='index-features'>{new_features}</p>
                             </div>
                           </div>
                         </Card.Body>

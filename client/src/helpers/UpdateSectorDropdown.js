@@ -4,7 +4,7 @@ import Select from 'react-select'
 import axios from 'axios'
 
 
-const SectorDropdown = ({ setFormFields, defaultSectors }) => {
+const UpdateSectorDropdown = ({ setFormFields, defaultSectors }) => {
 
   const [sectors, setSectors] = useState({
     selectOptions: [],
@@ -44,4 +44,4 @@ const SectorDropdown = ({ setFormFields, defaultSectors }) => {
 }
 
 
-export default SectorDropdown
+export default UpdateSectorDropdown

@@ -71,7 +71,7 @@ const ProfileAppDisplay = ({ errors, userId }) => {
       {apps ? (
         <ListGroup className='ms-1'>
           {apps.map(app => {
-            const { name, logo, id, version, added_at } = app
+            const { name, logo, id, version } = app
             return (
               <Link
                 className="text-decoration-none"
@@ -84,13 +84,11 @@ const ProfileAppDisplay = ({ errors, userId }) => {
                     </div>
                     <div className='d-flex flex-column align-items-start ms-3 profile-app-name'>
                       <h4>{name}</h4>
-                      <p className='d-none d-sm-block'>{version}</p>
+                      <p className=''>{version}</p>
                     </div>
                   </div>
-                  <div>
-                    <Link className='profile-btn btn align-self-end btn-lg btn-md mt-4 mb-4' to={`/apps/${id}/update`}>Edit</Link>
-                  </div>
                   <div className='delete-app-profile-btn'>
+                    <Link className='profile-btn btn align-self-end btn-lg btn-md mt-4 mb-4' id="edit2-btn" to={`/apps/${id}/update`}>Edit</Link>
                     <Link onClick={() => deleteApp(id)} className='btn mt-3 align-self-end' id="del2-btn" to=""><p className='delete-app-btn'>X</p></Link>
                   </div>
                 </ListGroupItem>
