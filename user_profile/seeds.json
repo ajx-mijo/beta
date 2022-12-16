@@ -1,0 +1,58 @@
+[
+{
+  "model": "user_profile.userprofile",
+  "pk": 1,
+  "fields": {
+    "first_name": "Tom",
+    "last_name": "tom2",
+    "profile_image": "xxxx",
+    "current_role_title": "Senior Dev",
+    "current_employer": "Google",
+    "years_exp": 10,
+    "biography": "Super talented individual",
+    "owner": 2
+  }
+},
+{
+  "model": "user_profile.userprofile",
+  "pk": 3,
+  "fields": {
+    "first_name": "Archie",
+    "last_name": "Rowan Hamilton",
+    "profile_image": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671185845/APP_OVERFLOW_API/dsuqev8bh2iwyotodoxe.png",
+    "current_role_title": "Junior Software Dev",
+    "current_employer": "General Assembly",
+    "years_exp": 1,
+    "biography": "Undertook a 3 month Software Engineering Intensive course at General Assembly. Still pretty clueless but having fun!",
+    "owner": 1
+  }
+},
+{
+  "model": "user_profile.userprofile",
+  "pk": 4,
+  "fields": {
+    "first_name": "Elon",
+    "last_name": "Musk",
+    "profile_image": "https://res.cloudinary.com/doqbnr4p6/image/upload/v1671177972/APP_OVERFLOW_API/ofzzmlvtyrivbqhico1v.png",
+    "current_role_title": "Twatter @ Space",
+    "current_employer": "The Shadow State",
+    "years_exp": 99,
+    "biography": "I am the Lord Supreme of all pointless things",
+    "owner": 5
+  }
+},
+{
+  "model": "user_profile.userprofile",
+  "pk": 6,
+  "fields": {
+    "first_name": "Tom",
+    "last_name": "tom2",
+    "profile_image": "xxxx",
+    "current_role_title": "Senior Dev",
+    "current_employer": "Google",
+    "years_exp": 10,
+    "biography": "Super talented individual",
+    "owner": 2
+  }
+}
+]
