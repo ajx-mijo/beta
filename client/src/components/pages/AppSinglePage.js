@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { isOwner, getToken, getUserId } from '../common/Authentication'
+import { isOwner, getToken } from '../common/Authentication'
 
 
 import Container from 'react-bootstrap/Container'

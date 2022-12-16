@@ -11,11 +11,8 @@ import Container from 'react-bootstrap/Container'
 import { isAuthenticated, handleLogout, getUserId, getToken } from './Authentication'
 import Logo from '../images/BetaLogoOfficial.png'
 
-
-//Custom imports 
-
 const NavBar = () => {
-  // ! State
+
   const [user, setUser] = useState([])
 
   const activeUser = getUserId()

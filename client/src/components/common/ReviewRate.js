@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 
 import axios from 'axios'
-import { getToken, isAuthenticated, getUserId, getPayload } from './Authentication'
+import { getToken, isAuthenticated } from './Authentication'
 
 import Col from 'react-bootstrap/Col'
 

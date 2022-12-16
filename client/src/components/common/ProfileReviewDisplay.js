@@ -72,7 +72,7 @@ const ProfileReviewDisplay = ({ errors, userId }) => {
               <Link
                 className="text-decoration-none"
                 key={id}
-                to={`/apps/${app}`}>
+                to={`/apps/${app.id}`}>
                 <ListGroupItem className='d-flex review-list list-group-item-action mt-2 review-profile-item'>
                   <div className='profile-app-content'>
                     <img className='list-group-img img-thumbnail' src={app.logo} alt={app.name} id='profile-review-image'></img>
